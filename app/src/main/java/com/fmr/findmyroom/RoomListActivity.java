@@ -2,6 +2,7 @@ package com.fmr.findmyroom;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
 public class RoomListActivity extends AppCompatActivity {
 
@@ -9,5 +10,10 @@ public class RoomListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list);
+
+        // set the toolbar
+        Toolbar roomListToolbar = findViewById(R.id.roomListToolbar);
+        roomListToolbar.setTitle("All Listing");
+        setSupportActionBar(roomListToolbar);
     }
 }

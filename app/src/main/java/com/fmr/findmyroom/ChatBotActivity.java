@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +21,11 @@ public class ChatBotActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_bot);
+
+        // set the toolbar
+        Toolbar chatBotToolbar = findViewById(R.id.chatBotToolbar);
+        chatBotToolbar.setTitle("Chat Bot");
+        setSupportActionBar(chatBotToolbar);
 
         // set up initial message list
         setUpMessage();
@@ -38,6 +44,9 @@ public class ChatBotActivity extends AppCompatActivity {
                 // get the input message
                 TextView inputMsgTxtView = findViewById(R.id.inputMessage);
                 String inputMessage = inputMsgTxtView.getText().toString();
+
+                // reset input text
+                inputMsgTxtView.setText("");
 
                 // set the message to model
                 firstChat.add(new ChatModel(inputMessage, false));
