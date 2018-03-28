@@ -14,6 +14,7 @@
         android:text="Sample Received Text"
         android:padding="10dp"
         android:textColor="@android:color/white"
+        android:textSize="16sp"
         android:layout_marginBottom="10dp"
         app:arrowWidth="8dp"
         app:angle="8dp"

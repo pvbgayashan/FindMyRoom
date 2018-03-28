@@ -31,4 +31,7 @@ dependencies {
 
     // bubble view
     compile 'com.github.lguipeng:BubbleView:1.0.1'
+
+    // design
+    compile 'com.android.support:design:26.+'
 }
