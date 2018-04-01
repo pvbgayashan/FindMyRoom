@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:cropToPadding="false"
-                    android:src="@drawable/rui" />
+                    android:src="@drawable/riu" />
 
                 <TextView
                     android:layout_width="wrap_content"

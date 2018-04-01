@@ -56,19 +56,24 @@
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Filter" />
+                            android:text="Filter"
+                            android:backgroundTint="#4CAF50"
+                            android:textColor="#FFFFFF" />
 
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/placeCard1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     app:cardCornerRadius="2dp"
                     app:cardElevation="4dp"
-                    app:cardPreventCornerOverlap="false">
+                    app:cardPreventCornerOverlap="false"
+                    android:foreground="?android:selectableItemBackground"
+                    android:clickable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -81,7 +86,7 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:cropToPadding="false"
-                            android:src="@drawable/rui" />
+                            android:src="@drawable/riu" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -99,12 +104,15 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/placeCard2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     app:cardCornerRadius="2dp"
                     app:cardElevation="4dp"
-                    app:cardPreventCornerOverlap="false">
+                    app:cardPreventCornerOverlap="false"
+                    android:foreground="?android:selectableItemBackground"
+                    android:clickable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -117,30 +125,33 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:cropToPadding="false"
-                            android:src="@drawable/rui" />
+                            android:src="@drawable/riu" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="RUI"
+                            android:text="Amaya Hills"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Ahungalla, Sri Lanka" />
+                            android:text="Kandy, Sri Lanka" />
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/placeCard3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     app:cardCornerRadius="2dp"
                     app:cardElevation="4dp"
-                    app:cardPreventCornerOverlap="false">
+                    app:cardPreventCornerOverlap="false"
+                    android:foreground="?android:selectableItemBackground"
+                    android:clickable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -153,30 +164,33 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:cropToPadding="false"
-                            android:src="@drawable/rui" />
+                            android:src="@drawable/riu" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="RUI"
+                            android:text="Galadari"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Ahungalla, Sri Lanka" />
+                            android:text="Colombo, Sri Lanka" />
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/placeCard4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     app:cardCornerRadius="2dp"
                     app:cardElevation="4dp"
-                    app:cardPreventCornerOverlap="false">
+                    app:cardPreventCornerOverlap="false"
+                    android:foreground="?android:selectableItemBackground"
+                    android:clickable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -189,30 +203,33 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:cropToPadding="false"
-                            android:src="@drawable/rui" />
+                            android:src="@drawable/riu" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="RUI"
+                            android:text="Jetwings"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Ahungalla, Sri Lanka" />
+                            android:text="Yala, Sri Lanka" />
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/placeCard5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     app:cardCornerRadius="2dp"
                     app:cardElevation="4dp"
-                    app:cardPreventCornerOverlap="false">
+                    app:cardPreventCornerOverlap="false"
+                    android:foreground="?android:selectableItemBackground"
+                    android:clickable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -225,19 +242,19 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:cropToPadding="false"
-                            android:src="@drawable/rui" />
+                            android:src="@drawable/riu" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="RUI"
+                            android:text="Kingsberry"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Ahungalla, Sri Lanka" />
+                            android:text="Colombo, Sri Lanka" />
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
