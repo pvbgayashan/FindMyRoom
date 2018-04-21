@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
+    android:background="#FFFFFF"
     tools:context="com.fmr.findmyroom.MainActivity">
 
     <LinearLayout
@@ -16,7 +17,7 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/chatBotCard"
-            android:layout_width="260dp"
+            android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_margin="10dp"
             android:foreground="?android:selectableItemBackground"
@@ -46,6 +47,38 @@
 
         </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/userConnCard"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="10dp"
+            android:foreground="?android:selectableItemBackground"
+            android:clickable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/purple_circle_background"
+                    android:src="@drawable/ic_people_outline_black_24dp"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Login or Signup"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +89,7 @@
         android:clipToPadding="false">
 
         <android.support.v7.widget.CardView
-            android:id="@+id/userConnCard"
+            android:id="@+id/addPropCard"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_margin="10dp"
@@ -72,15 +105,15 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/purple_circle_background"
-                    android:src="@drawable/ic_people_outline_black_24dp"
+                    android:background="@drawable/green_circle_background"
+                    android:src="@drawable/ic_add_circle_outline_black_24dp"
                     android:padding="10dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Login or Signup"
+                    android:text="Add Property"
                     android:textStyle="bold" />
 
             </LinearLayout>

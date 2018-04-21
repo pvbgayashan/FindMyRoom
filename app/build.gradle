@@ -34,4 +34,23 @@ dependencies {
 
     // design
     compile 'com.android.support:design:26.+'
+
+    // fire base core
+    compile 'com.google.firebase:firebase-core:12.0.1'
+
+    // fire base database
+    compile 'com.google.firebase:firebase-database:12.0.1'
+
+    // fire base storage
+    compile 'com.google.firebase:firebase-storage:12.0.1'
+
+    // api.ai
+    compile 'ai.api:sdk:2.0.7@aar'
+    compile 'ai.api:libai:1.6.12'
+
+    // picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }
+
+// apply google services file
+apply plugin: 'com.google.gms.google-services'

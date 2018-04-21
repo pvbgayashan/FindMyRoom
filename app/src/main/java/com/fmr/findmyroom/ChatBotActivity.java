@@ -1,20 +1,22 @@
 package com.fmr.findmyroom;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatBotActivity extends AppCompatActivity {
 
-    private List<ChatModel> firstChat = new ArrayList<>();
+    private List<ChatModel> chatList;
+    private ListView chatListView;
     private Context thisContext = this;
 
     @Override
@@ -22,17 +24,23 @@ public class ChatBotActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_bot);
 
+        // init chat array list and chat list view
+        chatList = new ArrayList<>();
+        chatListView = findViewById(R.id.chatListView);
+
         // set the toolbar
         Toolbar chatBotToolbar = findViewById(R.id.chatBotToolbar);
         chatBotToolbar.setTitle("Chat Bot");
         setSupportActionBar(chatBotToolbar);
 
-        // set up initial message list
-        setUpMessage();
+        // create AITextHandler instance
+        final AITextHandler aiTextHandler = new AITextHandler();
+
+        // create first chat
+        chatList.add(new ChatModel("Hi, I can assist you in many ways. Anyway how can I help you now?", true));
 
         // setup list view
-        ListView chatListView = findViewById(R.id.chatListView);
-        ChatMessageAdapter chatMessageAdapter = new ChatMessageAdapter(firstChat, thisContext);
+        ChatMessageAdapter chatMessageAdapter = new ChatMessageAdapter(chatList, thisContext);
         chatListView.setAdapter(chatMessageAdapter);
 
         // handle message sending button event
@@ -42,29 +50,39 @@ public class ChatBotActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // get the input message
-                TextView inputMsgTxtView = findViewById(R.id.inputMessage);
+                EditText inputMsgTxtView = findViewById(R.id.inputMessage);
                 String inputMessage = inputMsgTxtView.getText().toString();
 
-                // reset input text
+                // call to ai and set request
+                aiTextHandler.setBotRequest(inputMessage);
+
+                // set the request message to model
+                chatList.add(new ChatModel(inputMessage, false));
+
+                // reset input field
                 inputMsgTxtView.setText("");
 
-                // set the message to model
-                firstChat.add(new ChatModel(inputMessage, false));
-
                 // setup list view
-                ListView chatListView = findViewById(R.id.chatListView);
-                ChatMessageAdapter chatMessageAdapter = new ChatMessageAdapter(firstChat, thisContext);
+                ChatMessageAdapter chatMessageAdapter = new ChatMessageAdapter(chatList, thisContext);
                 chatListView.setAdapter(chatMessageAdapter);
+
+                // set time out
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // get bot response
+                        String botResponse = aiTextHandler.getBotResponse();
+
+                        // set the response message to model
+                        chatList.add(new ChatModel(botResponse, true));
+
+                        // setup list view
+                        ChatMessageAdapter chatMessageAdapter = new ChatMessageAdapter(chatList, thisContext);
+                        chatListView.setAdapter(chatMessageAdapter);
+                    }
+                }, 8000);
             }
         });
-    }
-
-    private void setUpMessage() {
-        firstChat.add(new ChatModel("Hello, How can I help you?", true));
-        firstChat.add(new ChatModel("I need a place to stay", false));
-        firstChat.add(new ChatModel("Okay, where are you now?", true));
-        firstChat.add(new ChatModel("Now I'm Panadura", false));
-        firstChat.add(new ChatModel("Fine, give me a second to find you a place to stay", true));
-        firstChat.add(new ChatModel("...", true));
     }
 }

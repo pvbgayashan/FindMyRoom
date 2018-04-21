@@ -17,12 +17,10 @@ import java.util.List;
 public class ChatMessageAdapter extends BaseAdapter {
 
     private List<ChatModel> firstChat;
-    private Context context;
     private LayoutInflater layoutInflater;
 
     public ChatMessageAdapter(List<ChatModel> firstChat, Context context) {
         this.firstChat = firstChat;
-        this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -48,9 +46,9 @@ public class ChatMessageAdapter extends BaseAdapter {
 
         if (currentView == null) {
             if (firstChat.get(i).isSend())
-                currentView = layoutInflater.inflate(R.layout.list_sent_msgs, null);
+                currentView = layoutInflater.inflate(R.layout.list_sent_msg, null);
             else
-                currentView = layoutInflater.inflate(R.layout.list_received_msgs, null);
+                currentView = layoutInflater.inflate(R.layout.list_received_msg, null);
         }
 
         BubbleTextView bubbleTextView = currentView.findViewById(R.id.bubbleChat);

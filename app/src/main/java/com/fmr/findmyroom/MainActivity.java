@@ -37,6 +37,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // go to add property activity
+        final CardView addPropCard = findViewById(R.id.addPropCard);
+
+        addPropCard.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent addPropIntent = new Intent(getApplicationContext(), AddPropertyActivity.class);
+                startActivity(addPropIntent);
+            }
+        });
+
         // go to all list activity
         final CardView allListingCard = findViewById(R.id.allListingCard);
 

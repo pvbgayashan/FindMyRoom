@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.fmr.findmyroom.RoomListActivity">
 
     <android.support.v7.widget.Toolbar
@@ -15,7 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
+    <RelativeLayout
+        android:layout_below="@+id/roomListToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/propListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:scrollbars="none" />
+
+    </RelativeLayout>
+
+    <!--<LinearLayout
         android:layout_below="@+id/roomListToolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -64,205 +78,10 @@
 
                 </android.support.v7.widget.CardView>
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/placeCard1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="4dp"
-                    app:cardPreventCornerOverlap="false"
-                    android:foreground="?android:selectableItemBackground"
-                    android:clickable="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:cropToPadding="false"
-                            android:src="@drawable/riu" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="RUI"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Ahungalla, Sri Lanka" />
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/placeCard2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="4dp"
-                    app:cardPreventCornerOverlap="false"
-                    android:foreground="?android:selectableItemBackground"
-                    android:clickable="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:cropToPadding="false"
-                            android:src="@drawable/riu" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Amaya Hills"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Kandy, Sri Lanka" />
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/placeCard3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="4dp"
-                    app:cardPreventCornerOverlap="false"
-                    android:foreground="?android:selectableItemBackground"
-                    android:clickable="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:cropToPadding="false"
-                            android:src="@drawable/riu" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Galadari"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Colombo, Sri Lanka" />
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/placeCard4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="4dp"
-                    app:cardPreventCornerOverlap="false"
-                    android:foreground="?android:selectableItemBackground"
-                    android:clickable="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:cropToPadding="false"
-                            android:src="@drawable/riu" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Jetwings"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Yala, Sri Lanka" />
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/placeCard5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="4dp"
-                    app:cardPreventCornerOverlap="false"
-                    android:foreground="?android:selectableItemBackground"
-                    android:clickable="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:cropToPadding="false"
-                            android:src="@drawable/riu" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Kingsberry"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Colombo, Sri Lanka" />
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
             </LinearLayout>
 
         </ScrollView>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
-</LinearLayout>
+</RelativeLayout>

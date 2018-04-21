@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1070539903231",
+    "firebase_url": "https://find-my-room-pro-id.firebaseio.com",
+    "project_id": "find-my-room-pro-id",
+    "storage_bucket": "find-my-room-pro-id.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070539903231:android:d11acafc46f8c77e",
+        "android_client_info": {
+          "package_name": "com.fmr.findmyroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070539903231-gno2hc7r5o7570e31mbtvntrdvde6nve.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fmr.findmyroom",
+            "certificate_hash": "d9de21b60819b573174354916d149706fdb6d1e3"
+          }
+        },
+        {
+          "client_id": "1070539903231-7o5k92fgivc4ghip5qe5fck5issecceo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKUGXgP515sEHVw4RVQbVlLXsNTJDpaFg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070539903231-7o5k92fgivc4ghip5qe5fck5issecceo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

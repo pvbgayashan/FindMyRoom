@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:maxWidth="200dp"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:text="Sample Received Text"
         android:padding="10dp"
         android:textColor="@android:color/white"
