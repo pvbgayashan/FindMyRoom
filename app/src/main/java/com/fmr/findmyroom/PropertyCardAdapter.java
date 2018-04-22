@@ -51,10 +51,12 @@ public class PropertyCardAdapter extends BaseAdapter {
         // update data for property card
         TextView propNameTxtView = view.findViewById(R.id.propName);
         TextView miniAddressTxtView = view.findViewById(R.id.miniAddress);
+        TextView priceTxtView = view.findViewById(R.id.price);
         ImageView propImgView = view.findViewById(R.id.propImageView);
 
         propNameTxtView.setText(propList.get(i).getPropName());
         miniAddressTxtView.setText(propList.get(i).getCity() + ", " + propList.get(i).getCountry());
+        priceTxtView.setText("$" + propList.get(i).getPrice() + "/day");
         Picasso.with(context)
                 .load(propList.get(i).getDownloadUrl())
                 .placeholder(R.drawable.placeholder)
