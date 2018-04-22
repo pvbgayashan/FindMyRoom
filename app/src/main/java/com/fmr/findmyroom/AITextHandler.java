@@ -2,25 +2,26 @@ package com.fmr.findmyroom;
 
 import android.os.AsyncTask;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import ai.api.AIDataService;
 import ai.api.AIServiceException;
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
-
-/**
- * Created by pvbgayashan on 4/11/18.
- */
+import ai.api.model.Result;
 
 public class AITextHandler implements AsyncResponse {
 
     private AIDataService aiDataService;
     private AIRequest aiRequest;
     private String botSpeech;
+    private int paramCount;
 
     public AITextHandler() {
         // client access token
-        final String CLIENT_ACCESS_TOKEN = "783e722978d140c7a9a3b2add252c362";
+        final String CLIENT_ACCESS_TOKEN = "0e3c85ca7b3f4d489e339f01400b75ec";
 
         // create ai configuration instance
         final AIConfiguration aiConfig = new AIConfiguration(CLIENT_ACCESS_TOKEN,
@@ -46,13 +47,21 @@ public class AITextHandler implements AsyncResponse {
     }
 
     @Override
-    public void setBotResponse(String output) {
-        botSpeech = output;
-        System.out.println("Receive: " + output);
+    public void setBotResponse(String botSpeech, int paramCount) {
+        this.botSpeech = botSpeech;
+        this.paramCount = paramCount;
+
+        System.out.println("Receive: " + botSpeech);
     }
 
-    public String getBotResponse() {
-        return botSpeech;
+    public Map<String, Object> getBotResponse() {
+        Map<String, Object> resultMap = new HashMap<>();
+
+        // put data
+        resultMap.put("botSpeech", botSpeech);
+        resultMap.put("paramCount", paramCount);
+
+        return resultMap;
     }
 
     // pass ai request as async task
@@ -80,12 +89,17 @@ public class AITextHandler implements AsyncResponse {
 
         @Override
         protected void onPostExecute(AIResponse aiResponse) {
-            asyncResponse.setBotResponse(aiResponse.getResult().getFulfillment().getSpeech());
+            Result result = aiResponse.getResult();
+
+            String botSpeech = result.getFulfillment().getSpeech();
+            int paramCount = result.getParameters().size();
+
+            asyncResponse.setBotResponse(botSpeech, paramCount);
         }
     }
 }
 
 // create an interface to get the output
 interface AsyncResponse {
-    void setBotResponse(String output);
+    void setBotResponse(String botSpeech, int paramCount);
 }

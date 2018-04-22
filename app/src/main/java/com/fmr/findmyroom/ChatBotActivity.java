@@ -1,6 +1,7 @@
 package com.fmr.findmyroom;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ChatBotActivity extends AppCompatActivity {
 
@@ -72,17 +74,41 @@ public class ChatBotActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         // get bot response
-                        String botResponse = aiTextHandler.getBotResponse();
+                        Map<String, Object> botResponse = aiTextHandler.getBotResponse();
+
+                        // get bot speech
+                        String botSpeech = botResponse.get("botSpeech").toString();
 
                         // set the response message to model
-                        chatList.add(new ChatModel(botResponse, true));
+                        chatList.add(new ChatModel(botSpeech, true));
 
                         // setup list view
                         ChatMessageAdapter chatMessageAdapter = new ChatMessageAdapter(chatList, thisContext);
                         chatListView.setAdapter(chatMessageAdapter);
+
+                        // check for params
+                        int paramCount = Integer.parseInt(botResponse.get("paramCount").toString());
+
+                        if (paramCount == 2) {
+                            findPropertyForResponse();
+                        }
                     }
-                }, 8000);
+                }, 5000);
             }
         });
+    }
+
+    // navigate to room list view
+    private void findPropertyForResponse() {
+        final Intent toPropertyList = new Intent(thisContext, RoomListActivity.class);
+
+        // wait
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(toPropertyList);
+            }
+        }, 3000);
     }
 }
