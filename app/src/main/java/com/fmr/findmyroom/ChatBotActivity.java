@@ -76,21 +76,23 @@ public class ChatBotActivity extends AppCompatActivity {
                         // get bot response
                         Map<String, Object> botResponse = aiTextHandler.getBotResponse();
 
-                        // get bot speech
-                        String botSpeech = botResponse.get("botSpeech").toString();
+                        if (botResponse != null) {
+                            // get bot speech
+                            String botSpeech = botResponse.get("botSpeech").toString();
 
-                        // set the response message to model
-                        chatList.add(new ChatModel(botSpeech, true));
+                            // set the response message to model
+                            chatList.add(new ChatModel(botSpeech, true));
 
-                        // setup list view
-                        ChatMessageAdapter chatMessageAdapter = new ChatMessageAdapter(chatList, thisContext);
-                        chatListView.setAdapter(chatMessageAdapter);
+                            // setup list view
+                            ChatMessageAdapter chatMessageAdapter = new ChatMessageAdapter(chatList, thisContext);
+                            chatListView.setAdapter(chatMessageAdapter);
 
-                        // check for params
-                        int paramCount = Integer.parseInt(botResponse.get("paramCount").toString());
+                            // check for params
+                            int paramCount = Integer.parseInt(botResponse.get("paramCount").toString());
 
-                        if (paramCount == 2) {
-                            findPropertyForResponse();
+                            if (paramCount == 2) {
+                                findPropertyForResponse();
+                            }
                         }
                     }
                 }, 5000);

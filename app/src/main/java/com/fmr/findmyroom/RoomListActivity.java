@@ -2,11 +2,13 @@ package com.fmr.findmyroom;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,17 +37,18 @@ public class RoomListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list);
 
-        // set the toolbar
-        Toolbar roomListToolbar = findViewById(R.id.roomListToolbar);
-        roomListToolbar.setTitle("All Listing");
-        setSupportActionBar(roomListToolbar);
-
         // init property list and property list view
         propList = new ArrayList<>();
         propListView = findViewById(R.id.propListView);
 
         // set database reference
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATA_REF);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     @Override
@@ -69,6 +72,7 @@ public class RoomListActivity extends AppCompatActivity {
                 // hide progress dialog
                 progressDialog.dismiss();
 
+                // add property to property list
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot propertySnap : dataSnapshot.getChildren()) {
                         Property property = propertySnap.getValue(Property.class);
@@ -78,6 +82,19 @@ public class RoomListActivity extends AppCompatActivity {
                     // setup list view
                     PropertyCardAdapter propertyCardAdapter = new PropertyCardAdapter(propList, thisContext);
                     propListView.setAdapter(propertyCardAdapter);
+
+                    // set the toolbar
+                    Toolbar roomListToolbar = findViewById(R.id.roomListToolbar);
+                    roomListToolbar.setTitle("All Properties");
+                    setSupportActionBar(roomListToolbar);
+                    if (getSupportActionBar() != null)
+                        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+                    // set property desc result text view
+                    long propCount = dataSnapshot.getChildrenCount();
+                    TextView propResultDescTxt = findViewById(R.id.propResultDescTxt);
+                    propResultDescTxt.setText("Showing " + propCount + " properties");
+                    propResultDescTxt.setBackgroundColor(Color.parseColor("#E0E0E0"));
                 }
             }
 
