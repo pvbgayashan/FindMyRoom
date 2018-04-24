@@ -11,7 +11,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.gson.JsonElement;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -88,10 +91,14 @@ public class ChatBotActivity extends AppCompatActivity {
                             chatListView.setAdapter(chatMessageAdapter);
 
                             // check for params
-                            int paramCount = Integer.parseInt(botResponse.get("paramCount").toString());
+                            HashMap<String, JsonElement> params;
+                            if (botResponse.get("params") != null && botResponse.get("params") instanceof HashMap) {
+                                params = (HashMap<String, JsonElement>) botResponse.get("params");
 
-                            if (paramCount == 2) {
-                                findPropertyForResponse();
+                                // all necessary params provided
+                                if (params.size() == 2) {
+                                    findPropertyForResponse(params);
+                                }
                             }
                         }
                     }
@@ -101,16 +108,24 @@ public class ChatBotActivity extends AppCompatActivity {
     }
 
     // navigate to room list view
-    private void findPropertyForResponse() {
-        final Intent toPropertyList = new Intent(thisContext, RoomListActivity.class);
+    private void findPropertyForResponse(HashMap<String, JsonElement> params) {
+        final Intent toPropertyListIntent = new Intent(thisContext, RoomListActivity.class);
+
+        // put data to intent
+        for (Map.Entry entry : params.entrySet()) {
+            String key = entry.getKey().toString();
+            String value = entry.getValue().toString();
+
+            toPropertyListIntent.putExtra(key, value);
+        }
 
         // wait
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(toPropertyList);
+                startActivity(toPropertyListIntent);
             }
-        }, 3000);
+        }, 5000);
     }
 }

@@ -83,18 +83,12 @@ public class RoomListActivity extends AppCompatActivity {
                     PropertyCardAdapter propertyCardAdapter = new PropertyCardAdapter(propList, thisContext);
                     propListView.setAdapter(propertyCardAdapter);
 
-                    // set the toolbar
-                    Toolbar roomListToolbar = findViewById(R.id.roomListToolbar);
-                    roomListToolbar.setTitle("All Properties");
-                    setSupportActionBar(roomListToolbar);
-                    if (getSupportActionBar() != null)
-                        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-                    // set property desc result text view
-                    long propCount = dataSnapshot.getChildrenCount();
-                    TextView propResultDescTxt = findViewById(R.id.propResultDescTxt);
-                    propResultDescTxt.setText("Showing " + propCount + " properties");
-                    propResultDescTxt.setBackgroundColor(Color.parseColor("#E0E0E0"));
+                    // set the toolbar and property description
+                    Bundle dataBundle = null;
+                    if (getIntent().getExtras() != null) {
+                        dataBundle = getIntent().getExtras();
+                    }
+                    setToolbarAndPropDesc(dataSnapshot, dataBundle);
                 }
             }
 
@@ -106,5 +100,35 @@ public class RoomListActivity extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         });
+    }
+
+    // create the toolbar and property result description
+    private void setToolbarAndPropDesc(DataSnapshot dataSnapshot, Bundle dataBundle) {
+        // extract data bundle
+        String city = null, pax = null;
+        if (dataBundle != null) {
+            city = dataBundle.getString("city").toString();
+            pax = dataBundle.getString("pax").toString();
+        }
+
+        // set the toolbar
+        Toolbar roomListToolbar = findViewById(R.id.roomListToolbar);
+
+        // set toolbar title and subtitle
+        if ((city != null && !city.isEmpty()) && (pax != null && !pax.isEmpty())) {
+            roomListToolbar.setTitle("Properties from " + city);
+            roomListToolbar.setSubtitle(pax + " person(s)");
+        } else {
+            roomListToolbar.setTitle("All Properties");
+        }
+        setSupportActionBar(roomListToolbar);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // set property desc result text view
+        long propCount = dataSnapshot.getChildrenCount();
+        TextView propResultDescTxt = findViewById(R.id.propResultDescTxt);
+        propResultDescTxt.setText("Showing " + propCount + " properties");
+        propResultDescTxt.setBackgroundColor(Color.parseColor("#E0E0E0"));
     }
 }

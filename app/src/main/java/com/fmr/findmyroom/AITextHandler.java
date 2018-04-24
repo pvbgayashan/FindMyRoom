@@ -2,6 +2,8 @@ package com.fmr.findmyroom;
 
 import android.os.AsyncTask;
 
+import com.google.gson.JsonElement;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +19,7 @@ public class AITextHandler implements AsyncResponse {
     private AIDataService aiDataService;
     private AIRequest aiRequest;
     private String botSpeech;
-    private int paramCount;
+    private HashMap<String, JsonElement> params;
 
     public AITextHandler() {
         // client access token
@@ -47,9 +49,9 @@ public class AITextHandler implements AsyncResponse {
     }
 
     @Override
-    public void setBotResponse(String botSpeech, int paramCount) {
+    public void setBotResponse(String botSpeech, HashMap<String, JsonElement> params) {
         this.botSpeech = botSpeech;
-        this.paramCount = paramCount;
+        this.params = params;
 
         System.out.println("Receive: " + botSpeech);
     }
@@ -59,7 +61,7 @@ public class AITextHandler implements AsyncResponse {
 
         // put data
         resultMap.put("botSpeech", botSpeech);
-        resultMap.put("paramCount", paramCount);
+        resultMap.put("params", params);
 
         return resultMap;
     }
@@ -92,14 +94,14 @@ public class AITextHandler implements AsyncResponse {
             Result result = aiResponse.getResult();
 
             String botSpeech = result.getFulfillment().getSpeech();
-            int paramCount = result.getParameters().size();
+            HashMap<String, JsonElement> params = result.getParameters();
 
-            asyncResponse.setBotResponse(botSpeech, paramCount);
+            asyncResponse.setBotResponse(botSpeech, params);
         }
     }
 }
 
 // create an interface to get the output
 interface AsyncResponse {
-    void setBotResponse(String botSpeech, int paramCount);
+    void setBotResponse(String botSpeech, HashMap<String, JsonElement> params);
 }
