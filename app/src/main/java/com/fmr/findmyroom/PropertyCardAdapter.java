@@ -1,6 +1,8 @@
 package com.fmr.findmyroom;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import java.util.List;
-
-/**
- * Created by pvbgayashan on 4/20/18.
- */
 
 public class PropertyCardAdapter extends BaseAdapter {
 
@@ -43,7 +41,7 @@ public class PropertyCardAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
 
         // set property card layout
         view = layoutInflater.inflate(R.layout.list_prop_card, null);
@@ -53,6 +51,21 @@ public class PropertyCardAdapter extends BaseAdapter {
         TextView miniAddressTxtView = view.findViewById(R.id.miniAddress);
         TextView priceTxtView = view.findViewById(R.id.price);
         ImageView propImgView = view.findViewById(R.id.propImageView);
+
+        // set click listener for property card
+        CardView propCard = view.findViewById(R.id.propCard);
+        propCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent detailViewIntent = new Intent(context, DetailViewActivity.class);
+
+                // add data to intent
+                detailViewIntent.putExtra("imgDownloadUrl", propList.get(i).getDownloadUrl());
+                detailViewIntent.putExtra("propName", propList.get(i).getPropName());
+
+                context.startActivity(detailViewIntent);
+            }
+        });
 
         propNameTxtView.setText(propList.get(i).getPropName());
         miniAddressTxtView.setText(propList.get(i).getCity() + ", " + propList.get(i).getCountry());
