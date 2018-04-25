@@ -57,6 +57,7 @@
             android:text="Full Name" />
 
         <EditText
+            android:id="@+id/fullNameTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="John Smith"
@@ -70,8 +71,10 @@
             android:layout_marginTop="4dp" />
 
         <EditText
+            android:id="@+id/emailTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             android:hint="example@mail.com"
             android:drawableRight="@drawable/ic_email" />
 
@@ -83,12 +86,15 @@
             android:layout_marginTop="4dp" />
 
         <EditText
+            android:id="@+id/passwordTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="********"
             android:drawableRight="@drawable/ic_password" />
 
         <Button
+            android:id="@+id/signUpBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -106,5 +112,13 @@
             android:backgroundTint="#0D47A1" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/signUpProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
 
 </RelativeLayout>

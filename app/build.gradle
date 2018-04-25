@@ -44,6 +44,9 @@ dependencies {
     // fire base storage
     compile 'com.google.firebase:firebase-storage:12.0.1'
 
+    // fire base auth
+    compile 'com.google.firebase:firebase-auth:12.0.1'
+
     // api.ai
     compile 'ai.api:sdk:2.0.7@aar'
     compile 'ai.api:libai:1.6.12'
