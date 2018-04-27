@@ -1,5 +1,6 @@
 package com.fmr.findmyroom;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -84,22 +85,26 @@ public class SignUpFragment extends Fragment {
         // create user
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
 
-                // hide progressbar
-                signUpProgressBar.setVisibility(View.GONE);
+                        // hide progressbar
+                        signUpProgressBar.setVisibility(View.GONE);
 
-                if (task.isSuccessful())
-                    Toast.makeText(view.getContext(), "User registered!", Toast.LENGTH_SHORT).show();
-                else if(task.getException() instanceof FirebaseAuthUserCollisionException)
-                    Toast.makeText(view.getContext(), "Username is not available!",
-                            Toast.LENGTH_SHORT).show();
-                else
-                    if (task.getException() != null)
-                    Toast.makeText(view.getContext(), task.getException().getMessage(),
-                            Toast.LENGTH_SHORT).show();
-            }
-        });
+                        if (task.isSuccessful()) {
+                            // intent for main activity
+                            Intent mainActivityIntent = new Intent(view.getContext(), MainActivity.class);
+                            mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(mainActivityIntent);
+                        } else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                            Toast.makeText(view.getContext(), "Username is not available!",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            if (task.getException() != null)
+                                Toast.makeText(view.getContext(), task.getException().getMessage(),
+                                        Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
