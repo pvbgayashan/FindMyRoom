@@ -92,10 +92,10 @@ public class SignUpFragment extends Fragment {
                         signUpProgressBar.setVisibility(View.GONE);
 
                         if (task.isSuccessful()) {
-                            // intent for main activity
-                            Intent mainActivityIntent = new Intent(view.getContext(), MainActivity.class);
-                            mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(mainActivityIntent);
+                            // intent for profile preference activity
+                            Intent proPreferenceActivity = new Intent(view.getContext(), UserPreferenceActivity.class);
+                            proPreferenceActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(proPreferenceActivity);
                         } else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                             Toast.makeText(view.getContext(), "Username is not available!",
                                     Toast.LENGTH_SHORT).show();

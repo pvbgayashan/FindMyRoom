@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--basic colors-->
     <color name="colorPrimary">#009688</color>
     <color name="colorPrimaryDark">#00796B</color>
     <color name="colorAccent">#4DB6AC</color>
@@ -11,4 +12,9 @@
     <color name="darkGrey">#616161</color>
     <color name="white">#FFFFFF</color>
     <color name="splashText">#80CBC4</color>
+
+    <!--toolbar colors-->
+    <color name="toolbarBack">#EEEEEE</color>
+    <color name="toolbarTitle">#212121</color>
+    <color name="toolbarSubTitle">#424242</color>
 </resources>

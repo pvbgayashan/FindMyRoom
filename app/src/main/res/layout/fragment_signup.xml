@@ -54,19 +54,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:text="Full Name" />
-
-        <EditText
-            android:id="@+id/fullNameTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="John Smith"
-            android:drawableRight="@drawable/ic_person_full_name" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
             android:text="Email"
             android:layout_marginTop="4dp" />
 

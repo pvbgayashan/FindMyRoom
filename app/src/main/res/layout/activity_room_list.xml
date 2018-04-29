@@ -10,10 +10,10 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/roomListToolbar"
         android:minHeight="?attr/actionBarSize"
-        android:background="@color/white"
-        app:titleTextColor="@color/darkGrey"
+        android:background="@color/toolbarBack"
+        app:titleTextColor="@color/toolbarTitle"
         app:titleMarginStart="20dp"
-        app:subtitleTextColor="@color/darkGrey"
+        app:subtitleTextColor="@color/toolbarSubTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -27,8 +27,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
             android:padding="4dp" />
 
         <ListView
