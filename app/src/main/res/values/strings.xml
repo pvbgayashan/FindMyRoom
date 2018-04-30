@@ -12,4 +12,10 @@
         <item>India</item>
         <item>China</item>
     </array>
+
+    <!--chat bot-->
+    <string name="bot_name">Virtual Agent</string>
+
+    <!--property list-->
+    <string name="all_properties">All Properties</string>
 </resources>

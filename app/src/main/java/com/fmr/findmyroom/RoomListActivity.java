@@ -1,13 +1,14 @@
 package com.fmr.findmyroom;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +25,7 @@ public class RoomListActivity extends AppCompatActivity {
     private List<Property> propList;
     private ListView propListView;
     private Context thisContext = this;
+    private ProgressBar progressBar;
 
     // constant
     private static final String DATA_FETCHING_STATUS = "Data Fetching Status";
@@ -41,6 +43,9 @@ public class RoomListActivity extends AppCompatActivity {
         propList = new ArrayList<>();
         propListView = findViewById(R.id.propListView);
 
+        // init progressbar
+        progressBar = findViewById(R.id.propListProgressbar);
+
         // set database reference
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATA_REF);
     }
@@ -55,11 +60,8 @@ public class RoomListActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        // show data fetching progress
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Fetching Data");
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+        // show progressbar
+        progressBar.setVisibility(View.VISIBLE);
 
         // set listener
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
@@ -69,8 +71,8 @@ public class RoomListActivity extends AppCompatActivity {
                 // reset the property list
                 propList.clear();
 
-                // hide progress dialog
-                progressDialog.dismiss();
+                // hide progressbar
+               progressBar.setVisibility(View.GONE);
 
                 // add property to property list
                 if (dataSnapshot.exists()) {
@@ -96,8 +98,8 @@ public class RoomListActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(DATA_FETCHING_STATUS, databaseError.toString());
 
-                // hide progress dialog
-                progressDialog.dismiss();
+                // hide progressbar
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -119,7 +121,7 @@ public class RoomListActivity extends AppCompatActivity {
             roomListToolbar.setTitle("Properties from " + city);
             roomListToolbar.setSubtitle(pax + " person(s)");
         } else {
-            roomListToolbar.setTitle("All Properties");
+            roomListToolbar.setTitle(R.string.all_properties);
         }
         setSupportActionBar(roomListToolbar);
         if (getSupportActionBar() != null)

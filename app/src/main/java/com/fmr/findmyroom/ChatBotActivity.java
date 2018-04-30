@@ -35,7 +35,7 @@ public class ChatBotActivity extends AppCompatActivity {
 
         // set the toolbar
         Toolbar chatBotToolbar = findViewById(R.id.chatBotToolbar);
-        chatBotToolbar.setTitle("Chat Bot");
+        chatBotToolbar.setTitle(R.string.bot_name);
         setSupportActionBar(chatBotToolbar);
 
         // create AITextHandler instance

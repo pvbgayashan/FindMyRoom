@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="I Can Help You"
+                    android:text="@string/bot_name"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -145,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="All Listing"
+                    android:text="@string/all_properties"
                     android:textStyle="bold" />
 
             </LinearLayout>
