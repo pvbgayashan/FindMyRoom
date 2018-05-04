@@ -37,6 +37,8 @@ public class ChatBotActivity extends AppCompatActivity {
         Toolbar chatBotToolbar = findViewById(R.id.chatBotToolbar);
         chatBotToolbar.setTitle(R.string.bot_name);
         setSupportActionBar(chatBotToolbar);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // create AITextHandler instance
         final AITextHandler aiTextHandler = new AITextHandler();
@@ -105,6 +107,12 @@ public class ChatBotActivity extends AppCompatActivity {
                 }, 5000);
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     // navigate to room list view

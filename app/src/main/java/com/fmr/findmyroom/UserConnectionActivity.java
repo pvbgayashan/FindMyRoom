@@ -2,8 +2,8 @@ package com.fmr.findmyroom;
 
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
-
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 
 public class UserConnectionActivity extends AppCompatActivity {
@@ -15,6 +15,13 @@ public class UserConnectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_connection);
 
+        // set the toolbar
+        Toolbar userConnToolbar = findViewById(R.id.userConnectionToolbar);
+        userConnToolbar.setTitle("User Management");
+        setSupportActionBar(userConnToolbar);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
         ViewPager mViewPager = findViewById(R.id.container);
@@ -22,6 +29,12 @@ public class UserConnectionActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     public void setupViewPager(ViewPager viewPager) {

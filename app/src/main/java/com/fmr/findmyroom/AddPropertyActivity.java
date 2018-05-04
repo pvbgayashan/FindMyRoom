@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +56,13 @@ public class AddPropertyActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_property);
 
+        // set the toolbar
+        Toolbar addPropToolbar = findViewById(R.id.addPropToolbar);
+        addPropToolbar.setTitle("Add Property");
+        setSupportActionBar(addPropToolbar);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // init elements
         propNameTxt = findViewById(R.id.propNameTxt);
         cityTxt = findViewById(R.id.cityTxt);
@@ -74,6 +82,12 @@ public class AddPropertyActivity extends AppCompatActivity implements View.OnCli
 
         selectImgBtn.setOnClickListener(this);
         savePropBtn.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     @Override
