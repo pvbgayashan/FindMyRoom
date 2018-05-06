@@ -92,6 +92,9 @@ public class SignUpFragment extends Fragment {
                         signUpProgressBar.setVisibility(View.GONE);
 
                         if (task.isSuccessful()) {
+                            // prevent back button action
+                            getActivity().finish();
+
                             // intent for profile preference activity
                             Intent proPreferenceActivity = new Intent(view.getContext(), UserPreferenceActivity.class);
                             proPreferenceActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -7,10 +7,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
@@ -23,11 +27,15 @@ public class ChatBotActivity extends AppCompatActivity {
     private List<ChatModel> chatList;
     private ListView chatListView;
     private Context thisContext = this;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_bot);
+
+        // init fire base auth instance
+        mAuth = FirebaseAuth.getInstance();
 
         // init chat array list and chat list view
         chatList = new ArrayList<>();
@@ -107,6 +115,23 @@ public class ChatBotActivity extends AppCompatActivity {
                 }, 5000);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.logoutOption:
+                mAuth.signOut();
+                break;
+        }
+        return true;
     }
 
     @Override

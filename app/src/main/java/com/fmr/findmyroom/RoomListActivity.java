@@ -6,11 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +30,7 @@ public class RoomListActivity extends AppCompatActivity {
     private ListView propListView;
     private Context thisContext = this;
     private ProgressBar progressBar;
+    private FirebaseAuth mAuth;
 
     // constant
     private static final String DATA_FETCHING_STATUS = "Data Fetching Status";
@@ -39,6 +44,9 @@ public class RoomListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list);
 
+        // init fire base auth instance
+        mAuth = FirebaseAuth.getInstance();
+
         // init property list and property list view
         propList = new ArrayList<>();
         propListView = findViewById(R.id.propListView);
@@ -48,6 +56,23 @@ public class RoomListActivity extends AppCompatActivity {
 
         // set database reference
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATA_REF);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.logoutOption:
+                mAuth.signOut();
+                break;
+        }
+        return true;
     }
 
     @Override
