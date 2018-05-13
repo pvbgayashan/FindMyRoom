@@ -1,9 +1,5 @@
 package com.fmr.findmyroom;
 
-/**
- * Created by buddhika on 3/16/18.
- */
-
 public class ChatModel {
 
     private String chatMessage;
@@ -18,15 +14,7 @@ public class ChatModel {
         return chatMessage;
     }
 
-    public void setChatMessage(String chatMessage) {
-        this.chatMessage = chatMessage;
-    }
-
     public boolean isSend() {
         return isSend;
-    }
-
-    public void setSend(boolean send) {
-        isSend = send;
     }
 }

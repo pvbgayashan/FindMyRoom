@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class RoomListActivity extends AppCompatActivity {
     private Context thisContext = this;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
+    private MaterialSearchView propSearchView;
 
     // constant
     private static final String DATA_FETCHING_STATUS = "Data Fetching Status";
@@ -54,6 +56,9 @@ public class RoomListActivity extends AppCompatActivity {
         // init progressbar
         progressBar = findViewById(R.id.propListProgressbar);
 
+        // init material search view
+        propSearchView = findViewById(R.id.propSearch);
+
         // set database reference
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATA_REF);
     }
@@ -61,13 +66,18 @@ public class RoomListActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
+        menuInflater.inflate(R.menu.menu_prop_list, menu);
+
+        // set menu item to search view
+        MenuItem searchMenuItem = menu.findItem(R.id.searchOption);
+        propSearchView.setMenuItem(searchMenuItem);
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.logoutOption:
                 mAuth.signOut();
                 break;
@@ -97,7 +107,7 @@ public class RoomListActivity extends AppCompatActivity {
                 propList.clear();
 
                 // hide progressbar
-               progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
 
                 // add property to property list
                 if (dataSnapshot.exists()) {

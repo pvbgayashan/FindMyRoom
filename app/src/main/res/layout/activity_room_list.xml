@@ -7,18 +7,8 @@
     android:background="@color/white"
     tools:context="com.fmr.findmyroom.RoomListActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/roomListToolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/toolbarBack"
-        app:titleTextColor="@color/toolbarTitle"
-        app:titleMarginStart="20dp"
-        app:subtitleTextColor="@color/toolbarSubTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <RelativeLayout
-        android:layout_below="@+id/roomListToolbar"
+        android:layout_below="@+id/toolbarFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -47,5 +37,28 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/toolbarFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/roomListToolbar"
+            android:minHeight="?attr/actionBarSize"
+            android:background="@color/toolbarBack"
+            app:titleTextColor="@color/toolbarTitle"
+            app:titleMarginStart="20dp"
+            app:subtitleTextColor="@color/toolbarSubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.miguelcatalan.materialsearchview.MaterialSearchView
+            android:id="@+id/propSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+    </FrameLayout>
 
 </RelativeLayout>

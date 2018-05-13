@@ -73,7 +73,7 @@ public class LoginFragment extends Fragment {
             loginPasswordTxt.requestFocus();
             return;
         } else if (loginPassword.length() < 6) {
-            loginPasswordTxt.setError("Wrong password");
+            loginPasswordTxt.setError("Minimum character length must be 6");
             loginPasswordTxt.requestFocus();
             return;
         }

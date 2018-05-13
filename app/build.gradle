@@ -53,6 +53,9 @@ dependencies {
 
     // picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    // material search view
+    compile 'com.miguelcatalan:materialsearchview:1.4.0'
 }
 
 // apply google services file

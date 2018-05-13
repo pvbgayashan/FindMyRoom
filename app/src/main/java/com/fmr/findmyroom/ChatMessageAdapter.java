@@ -7,32 +7,27 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.github.library.bubbleview.BubbleTextView;
-
 import java.util.List;
-
-/**
- * Created by buddhika on 3/16/18.
- */
 
 public class ChatMessageAdapter extends BaseAdapter {
 
-    private List<ChatModel> firstChat;
+    private List<ChatModel> chatList;
     private LayoutInflater layoutInflater;
 
-    public ChatMessageAdapter(List<ChatModel> firstChat, Context context) {
-        this.firstChat = firstChat;
+    public ChatMessageAdapter(List<ChatModel> chatList, Context context) {
+        this.chatList = chatList;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
 
     @Override
     public int getCount() {
-        return firstChat.size();
+        return chatList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return firstChat.get(i);
+        return chatList.get(i);
     }
 
     @Override
@@ -45,14 +40,14 @@ public class ChatMessageAdapter extends BaseAdapter {
         View currentView = view;
 
         if (currentView == null) {
-            if (firstChat.get(i).isSend())
+            if (chatList.get(i).isSend())
                 currentView = layoutInflater.inflate(R.layout.list_sent_msg, null);
             else
                 currentView = layoutInflater.inflate(R.layout.list_received_msg, null);
         }
 
         BubbleTextView bubbleTextView = currentView.findViewById(R.id.bubbleChat);
-        bubbleTextView.setText(firstChat.get(i).getChatMessage());
+        bubbleTextView.setText(chatList.get(i).getChatMessage());
 
         return currentView;
     }
