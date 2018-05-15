@@ -54,6 +54,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
+            android:text="Name"
+            android:layout_marginTop="4dp" />
+
+        <EditText
+            android:id="@+id/signUpNameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:hint="John Doe"
+            android:drawableRight="@drawable/ic_person_full_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
             android:text="Email"
             android:layout_marginTop="4dp" />
 
@@ -88,15 +103,6 @@
             android:text="Sign Up"
             android:textColor="#FFFFFF"
             android:backgroundTint="#4CAF50" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Sign Up with FACEBOOK"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#0D47A1" />
 
     </LinearLayout>
 

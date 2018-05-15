@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.fmr.findmyroom.RegularUserPreferenceActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/regUsrPrefToolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/toolbarBack"
+        app:titleTextColor="@color/toolbarTitle"
+        app:titleMarginStart="20dp"
+        app:subtitleTextColor="@color/toolbarSubTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/advUsrPrefTop"
+        android:layout_below="@id/regUsrPrefToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <Spinner
+                android:id="@+id/regUsrCountries"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:entries="@array/countries" />
+
+            <Spinner
+                android:id="@+id/regUsrGenders"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:entries="@array/genders" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/regUsrCityTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10"
+                android:hint="City"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/regUsrAgeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10"
+                android:hint="Age"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/advUsrPrefTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/addRegUsrPrefBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="Save"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/addRegUsrPrefProgressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

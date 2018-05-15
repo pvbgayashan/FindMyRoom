@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -17,13 +18,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class UserPreferenceActivity extends AppCompatActivity {
+public class AdvancedUserPreferenceActivity extends AppCompatActivity {
 
-    private EditText nameTxt;
-    private EditText ageTxt;
-    private EditText genderTxt;
-    private EditText countryTxt;
+    private Spinner countrySpinner;
     private EditText cityTxt;
+    private EditText emailTxt;
+    private EditText contactNoTxt;
+    private EditText nicTxt;
+
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
@@ -32,22 +34,7 @@ public class UserPreferenceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_preference);
-
-        // set the toolbar
-        Toolbar userPrefToolbar = findViewById(R.id.userPrefToolbar);
-        userPrefToolbar.setTitle("User Preferences");
-        setSupportActionBar(userPrefToolbar);
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        // init input fields and progressbar
-        nameTxt = findViewById(R.id.nameTxt);
-        ageTxt = findViewById(R.id.ageTxt);
-        genderTxt = findViewById(R.id.genderTxt);
-        countryTxt = findViewById(R.id.countryTxt);
-        cityTxt = findViewById(R.id.cityTxt);
-        progressBar = findViewById(R.id.addUserProProgressbar);
+        setContentView(R.layout.activity_advanced_user_preference);
 
         // init fire base auth instance
         mAuth = FirebaseAuth.getInstance();
@@ -55,9 +42,24 @@ public class UserPreferenceActivity extends AppCompatActivity {
         // init fire base database instance
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("user_data");
 
+        // set the toolbar
+        Toolbar userPrefToolbar = findViewById(R.id.advUsrPrefToolbar);
+        userPrefToolbar.setTitle("Advanced User");
+        setSupportActionBar(userPrefToolbar);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // init input fields and progressbar
+        countrySpinner = findViewById(R.id.advUsrCountrySpinner);
+        cityTxt = findViewById(R.id.advUsrCityTxt);
+        emailTxt = findViewById(R.id.advUsrEmailTxt);
+        contactNoTxt = findViewById(R.id.advUsrContactNumTxt);
+        nicTxt = findViewById(R.id.advUsrNicTxt);
+        progressBar = findViewById(R.id.addAdvUserPrefProgressbar);
+
         // add user profile
-        Button addUserProBtn = findViewById(R.id.addUserProBtn);
-        addUserProBtn.setOnClickListener(new View.OnClickListener() {
+        Button addUserPrefBtn = findViewById(R.id.addAdvUserPrefBtn);
+        addUserPrefBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addUserProfile();
@@ -67,11 +69,18 @@ public class UserPreferenceActivity extends AppCompatActivity {
 
     // add user profile data for registered user
     private void addUserProfile() {
-        String name = nameTxt.getText().toString();
-        String age = ageTxt.getText().toString();
-        String gender = genderTxt.getText().toString();
-        String country = countryTxt.getText().toString();
+        // get name from intent
+        String name = "";
+        if (getIntent().getExtras() != null) {
+            name = getIntent().getExtras().getString("name");
+        }
+
+        final String userType = "advanced";
+        String country = countrySpinner.getSelectedItem().toString();
         String city = cityTxt.getText().toString();
+        String email = emailTxt.getText().toString();
+        String contactNo = contactNoTxt.getText().toString();
+        String nic = nicTxt.getText().toString();
 
         // show progressbar
         progressBar.setVisibility(View.VISIBLE);
@@ -79,7 +88,7 @@ public class UserPreferenceActivity extends AppCompatActivity {
         // save user profile data with registered user id
         if (mAuth.getCurrentUser() != null && !mAuth.getCurrentUser().getUid().isEmpty()) {
             String uId = mAuth.getCurrentUser().getUid();
-            User user = new User(name, age, gender, country, city);
+            User user = new User(userType, name, country, city, email, contactNo, nic);
             mDatabaseRef.child(uId).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
@@ -87,13 +96,13 @@ public class UserPreferenceActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
 
                     // navigate to property list view
-                    Intent propListIntent = new Intent(getApplicationContext(), RoomListActivity.class);
-                    startActivity(propListIntent);
+                    Intent addPropIntent = new Intent(getApplicationContext(), AddPropertyActivity.class);
+                    startActivity(addPropIntent);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception ex) {
-                    Toast.makeText(UserPreferenceActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdvancedUserPreferenceActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

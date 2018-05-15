@@ -11,6 +11,18 @@
         <item>Sri Lanka</item>
         <item>India</item>
         <item>China</item>
+        <item>United Kingdom</item>
+        <item>United States</item>
+        <item>Japan</item>
+        <item>Australia</item>
+        <item>Singapore</item>
+        <item>Thailand</item>
+        <item>Malaysia</item>
+    </array>
+
+    <array name="genders">
+        <item>Male</item>
+        <item>Female</item>
     </array>
 
     <!--chat bot-->

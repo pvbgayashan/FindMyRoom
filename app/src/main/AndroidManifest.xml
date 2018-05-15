@@ -30,7 +30,8 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".DetailViewActivity" />
         <activity android:name=".AddPropertyActivity" />
-        <activity android:name=".UserPreferenceActivity" />
+        <activity android:name=".RegularUserPreferenceActivity" />
+        <activity android:name=".AdvancedUserPreferenceActivity" />
     </application>
 
 </manifest>

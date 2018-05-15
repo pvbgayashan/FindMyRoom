@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/userTypeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="User Type"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp" />
+
+    <View
+        android:layout_width="220dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/userTypeTxt"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/regularUserBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userTypeTxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#03A9F4"
+        android:text="Search Only"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/advancedUserBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/regularUserBtn"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#01579B"
+        android:text="Search and Add"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

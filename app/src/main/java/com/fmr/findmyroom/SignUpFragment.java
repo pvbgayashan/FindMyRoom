@@ -1,5 +1,6 @@
 package com.fmr.findmyroom;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,22 +23,26 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignUpFragment extends Fragment {
 
-    private EditText emailTxt, passwordTxt;
+    private EditText nameTxt, emailTxt, passwordTxt;
     private ProgressBar signUpProgressBar;
+
     private FirebaseAuth mAuth;
+
+    private static final String NAME = "name";
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
 
+        // initialize fire base auth instance
+        mAuth = FirebaseAuth.getInstance();
+
         // initialize input and action elements
+        nameTxt = view.findViewById(R.id.signUpNameTxt);
         emailTxt = view.findViewById(R.id.emailTxt);
         passwordTxt = view.findViewById(R.id.passwordTxt);
         signUpProgressBar = view.findViewById(R.id.signUpProgressBar);
-
-        // initialize fire base auth instance
-        mAuth = FirebaseAuth.getInstance();
 
         // implement sign up function
         Button signUpBtn = view.findViewById(R.id.signUpBtn);
@@ -54,8 +59,16 @@ public class SignUpFragment extends Fragment {
     // user registration
     private void registerUser(final View view) {
         // get user input data
+        String name = nameTxt.getText().toString();
         String email = emailTxt.getText().toString();
         String password = passwordTxt.getText().toString();
+
+        // validate name
+        if (name.isEmpty()) {
+            nameTxt.setError("Name is required");
+            nameTxt.requestFocus();
+            return;
+        }
 
         // validate email
         if (email.isEmpty()) {
@@ -92,13 +105,38 @@ public class SignUpFragment extends Fragment {
                         signUpProgressBar.setVisibility(View.GONE);
 
                         if (task.isSuccessful()) {
-                            // prevent back button action
-                            getActivity().finish();
+                            // get input name
+                            final String name = nameTxt.getText().toString();
 
-                            // intent for profile preference activity
-                            Intent proPreferenceActivity = new Intent(view.getContext(), UserPreferenceActivity.class);
-                            proPreferenceActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(proPreferenceActivity);
+                            // get the user type and navigate to relevant preferences activity
+                            Dialog userTypeSelector = new Dialog(view.getContext());
+                            userTypeSelector.setContentView(R.layout.pop_up_dialog);
+
+                            userTypeSelector.setCanceledOnTouchOutside(false);
+                            userTypeSelector.show();
+
+                            // handle button clicks of dialog box
+                            // regular user button
+                            Button regularUserBtn = userTypeSelector.findViewById(R.id.regularUserBtn);
+                            regularUserBtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent regularUserIntent = new Intent(view.getContext(), RegularUserPreferenceActivity.class);
+                                    regularUserIntent.putExtra(NAME, name);
+                                    startActivity(regularUserIntent);
+                                }
+                            });
+
+                            // advanced user button
+                            Button advancedUserBtn = userTypeSelector.findViewById(R.id.advancedUserBtn);
+                            advancedUserBtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent advancedUserIntent = new Intent(view.getContext(), AdvancedUserPreferenceActivity.class);
+                                    advancedUserIntent.putExtra(NAME, name);
+                                    startActivity(advancedUserIntent);
+                                }
+                            });
                         } else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                             Toast.makeText(view.getContext(), "Username is not available!",
                                     Toast.LENGTH_SHORT).show();
