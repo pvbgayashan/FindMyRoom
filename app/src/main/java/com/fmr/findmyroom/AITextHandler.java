@@ -23,7 +23,7 @@ public class AITextHandler implements AsyncResponse {
 
     public AITextHandler() {
         // client access token
-        final String CLIENT_ACCESS_TOKEN = "0e3c85ca7b3f4d489e339f01400b75ec";
+        final String CLIENT_ACCESS_TOKEN = "f63af3565d55449b9946e7a8d298b07a";
 
         // create ai configuration instance
         final AIConfiguration aiConfig = new AIConfiguration(CLIENT_ACCESS_TOKEN,
