@@ -33,6 +33,7 @@ public class RoomListActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
     private MaterialSearchView propSearchView;
+    private Bundle intentDataBundle;
 
     // constant
     private static final String DATA_FETCHING_STATUS = "Data Fetching Status";
@@ -61,6 +62,11 @@ public class RoomListActivity extends AppCompatActivity {
 
         // set database reference
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATA_REF);
+
+        // get data from intent
+        if (getIntent().getExtras() != null) {
+            intentDataBundle = getIntent().getExtras();
+        }
     }
 
     @Override
@@ -113,7 +119,17 @@ public class RoomListActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot propertySnap : dataSnapshot.getChildren()) {
                         Property property = propertySnap.getValue(Property.class);
-                        propList.add(property);
+
+                        // add filter to data
+                        if (intentDataBundle != null && intentDataBundle.getString("city") != null) { // add filtered data to list
+                            String city = intentDataBundle.getString("city").replace("\"", "");
+
+                            if (property.getCity().toLowerCase().contains(city.toLowerCase())) {
+                                propList.add(property);
+                            }
+                        } else { // add all property to list
+                            propList.add(property);
+                        }
                     }
 
                     // setup list view
@@ -121,11 +137,7 @@ public class RoomListActivity extends AppCompatActivity {
                     propListView.setAdapter(propertyCardAdapter);
 
                     // set the toolbar and property description
-                    Bundle dataBundle = null;
-                    if (getIntent().getExtras() != null) {
-                        dataBundle = getIntent().getExtras();
-                    }
-                    setToolbarAndPropDesc(dataSnapshot, dataBundle);
+                    setToolbarAndPropDesc(dataSnapshot, intentDataBundle);
                 }
             }
 
@@ -140,12 +152,15 @@ public class RoomListActivity extends AppCompatActivity {
     }
 
     // create the toolbar and property result description
-    private void setToolbarAndPropDesc(DataSnapshot dataSnapshot, Bundle dataBundle) {
+    private void setToolbarAndPropDesc(DataSnapshot dataSnapshot, Bundle intentDataBundle) {
         // extract data bundle
         String city = null, pax = null;
-        if (dataBundle != null) {
-            city = dataBundle.getString("city").toString();
-            pax = dataBundle.getString("pax").toString();
+        if (intentDataBundle != null) {
+            if (intentDataBundle.getString("city") != null)
+                city = intentDataBundle.getString("city").replace("\"", "");
+
+            if (intentDataBundle.getString("pax") != null)
+                pax = intentDataBundle.getString("pax").replace("\"", "");
         }
 
         // set the toolbar
@@ -153,7 +168,7 @@ public class RoomListActivity extends AppCompatActivity {
 
         // set toolbar title and subtitle
         if ((city != null && !city.isEmpty()) && (pax != null && !pax.isEmpty())) {
-            roomListToolbar.setTitle("Properties from " + city);
+            roomListToolbar.setTitle(city);
             roomListToolbar.setSubtitle(pax + " person(s)");
         } else {
             roomListToolbar.setTitle(R.string.all_properties);
