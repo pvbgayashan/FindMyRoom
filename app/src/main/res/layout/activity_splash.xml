@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     tools:context="com.fmr.findmyroom.SplashActivity">
 
     <LinearLayout
@@ -14,21 +14,10 @@
 
         <ImageView
             android:id="@+id/splashImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
             android:src="@drawable/logo" />
-
-        <TextView
-            android:id="@+id/splashTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="FIND MY ROOM"
-            android:textColor="@color/splashText"
-            android:textSize="16sp"
-            android:textStyle="bold" />
 
     </LinearLayout>
 
