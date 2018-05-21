@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.fmr.findmyroom.AddPropertyActivity">
 
     <android.support.v7.widget.Toolbar
@@ -12,93 +15,12 @@
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         android:background="@color/toolbarBack"
-        app:titleTextColor="@color/toolbarTitle"
-        app:titleMarginStart="20dp" />
+        app:titleTextColor="@color/toolbarTitle" />
 
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/addPropStepContainer"
+        android:layout_below="@+id/addPropToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/addPropToolbar">
-
-        <EditText
-            android:id="@+id/propNameTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="Property Name" />
-
-        <Spinner
-            android:id="@+id/countrySpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/cityTxt"
-            android:layout_alignLeft="@+id/cityTxt"
-            android:layout_alignRight="@+id/cityTxt"
-            android:layout_alignStart="@+id/cityTxt"
-            android:layout_below="@+id/propNameTxt"
-            android:entries="@array/countries" />
-
-        <EditText
-            android:id="@+id/cityTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/propNameTxt"
-            android:layout_alignStart="@+id/propNameTxt"
-            android:layout_below="@+id/countrySpinner"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="City" />
-
-        <EditText
-            android:id="@+id/priceTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/cityTxt"
-            android:layout_alignRight="@+id/cityTxt"
-            android:layout_below="@+id/cityTxt"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="Price(10$/day)" />
-
-        <Button
-            android:id="@+id/selectImgBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/priceTxt"
-            android:layout_alignStart="@+id/priceTxt"
-            android:layout_alignRight="@+id/priceTxt"
-            android:layout_alignEnd="@+id/priceTxt"
-            android:layout_below="@+id/priceTxt"
-            android:backgroundTint="#0288D1"
-            android:textColor="#FFFFFF"
-            android:text="Browse Image" />
-
-        <ImageView
-            android:id="@+id/selectedImgView"
-            android:layout_width="240dp"
-            android:layout_height="120dp"
-            android:layout_margin="10dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/selectImgBtn"
-            app:srcCompat="@color/white" />
-
-        <Button
-            android:id="@+id/savePropBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_below="@+id/selectedImgView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="14dp"
-            android:backgroundTint="#43A047"
-            android:text="Save Property"
-            android:textColor="#FFFFFF" />
-
-    </RelativeLayout>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>
