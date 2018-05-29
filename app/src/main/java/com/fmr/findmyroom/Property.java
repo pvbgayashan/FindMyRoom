@@ -1,31 +1,40 @@
 package com.fmr.findmyroom;
 
-/**
- * Created by pvbgayashan on 4/19/18.
- */
+import java.util.Map;
 
 public class Property {
 
-    private String propName;
+    private String name;
+    private String price;
     private String country;
     private String city;
-    private String price;
+    private String address;
+    private String postalCode;
     private String downloadUrl;
+    private Map<String, Boolean> propPrefMapper;
 
     public Property() {
         // empty constructor required
     }
 
-    public Property(String propName, String country, String city, String price, String downloadUrl) {
-        this.propName = propName;
+    public Property(String name, String price, String country, String city, String address,
+                    String postalCode, String downloadUrl, Map<String, Boolean> propPrefMapper) {
+        this.name = name;
+        this.price = price;
         this.country = country;
         this.city = city;
-        this.price = price;
+        this.address = address;
+        this.postalCode = postalCode;
         this.downloadUrl = downloadUrl;
+        this.propPrefMapper = propPrefMapper;
     }
 
     public String getPropName() {
-        return propName;
+        return name;
+    }
+
+    public String getPrice() {
+        return price;
     }
 
     public String getCountry() {
@@ -36,11 +45,19 @@ public class Property {
         return city;
     }
 
-    public String getPrice() {
-        return price;
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
     }
 
     public String getDownloadUrl() {
         return downloadUrl;
+    }
+
+    public Map<String, Boolean> getPropertyPrefMapper() {
+        return propPrefMapper;
     }
 }

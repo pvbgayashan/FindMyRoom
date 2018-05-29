@@ -5,9 +5,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
-public class AddPropertyActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddPropertyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +30,5 @@ public class AddPropertyActivity extends AppCompatActivity implements View.OnCli
     public boolean onSupportNavigateUp() {
         finish();
         return true;
-    }
-
-    @Override
-    public void onClick(View view) {
-
     }
 }

@@ -1,55 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
 
-    <Button
-        android:id="@+id/addPropImgSelectorBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Select Main Image" />
-
-    <ImageView
-        android:id="@+id/addPropMainImage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/addPropImgSelectorBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/placeholder" />
-
-    <Button
-        android:id="@+id/stepThreeBackBtn"
+    <TextView
+        android:id="@+id/accommodationFacInTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/addPropMainImage"
+        android:layout_alignParentTop="true"
+        android:text="Facilities in Accommodation"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxParking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/accommodationFacInTxt"
+        android:layout_marginTop="4dp"
+        android:text="Parking" />
+
+    <CheckBox
+        android:id="@+id/checkBoxAttachedBathroom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBoxParking"
+        android:layout_alignBottom="@+id/checkBoxParking"
+        android:layout_toEndOf="@+id/checkBoxParking"
+        android:layout_toRightOf="@+id/checkBoxParking"
         android:layout_marginLeft="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:text="Back" />
+        android:text="Attached Bathroom" />
+
+    <CheckBox
+        android:id="@+id/checkBoxAC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxParking"
+        android:text="AC" />
+
+    <CheckBox
+        android:id="@+id/checkBoxHotWater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBoxAC"
+        android:layout_alignBottom="@+id/checkBoxAC"
+        android:layout_toEndOf="@+id/checkBoxParking"
+        android:layout_toRightOf="@+id/checkBoxParking"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:text="Hot Water" />
+
+    <CheckBox
+        android:id="@+id/checkBoxUpStair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxHotWater"
+        android:text="Up Stair" />
+
+    <CheckBox
+        android:id="@+id/checkBoxPrivateBalcony"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBoxUpStair"
+        android:layout_alignBottom="@+id/checkBoxUpStair"
+        android:layout_toEndOf="@+id/checkBoxParking"
+        android:layout_toRightOf="@+id/checkBoxParking"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:text="Private Balcony" />
+
+    <TextView
+        android:id="@+id/accommodationFacAroundTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/checkBoxUpStair"
+        android:layout_marginTop="10dp"
+        android:text="Facilities Around Accommodation"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSuperMarket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/accommodationFacAroundTxt"
+        android:layout_marginTop="4dp"
+        android:text="Super Market" />
+
+    <CheckBox
+        android:id="@+id/checkBoxGym"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBoxSuperMarket"
+        android:layout_alignBottom="@+id/checkBoxSuperMarket"
+        android:layout_toEndOf="@+id/checkBoxParking"
+        android:layout_toRightOf="@+id/checkBoxParking"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:text="Gym" />
+
+    <CheckBox
+        android:id="@+id/checkBoxHospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxSuperMarket"
+        android:text="Hospital" />
+
+    <CheckBox
+        android:id="@+id/checkBoxTrainStation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBoxHospital"
+        android:layout_alignBottom="@+id/checkBoxHospital"
+        android:layout_toEndOf="@+id/checkBoxParking"
+        android:layout_toRightOf="@+id/checkBoxParking"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:text="Train Station" />
+
+    <CheckBox
+        android:id="@+id/checkBoxBusStation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxHospital"
+        android:text="Bus Station" />
+
+    <TextView
+        android:id="@+id/amenitiesAndRulesTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/checkBoxBusStation"
+        android:layout_marginTop="10dp"
+        android:text="Amenities and Rules"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxPets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/amenitiesAndRulesTxt"
+        android:layout_marginTop="4dp"
+        android:text="Pets" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSmoking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxPets"
+        android:text="Smoking" />
+
+    <CheckBox
+        android:id="@+id/checkBoxChildCare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxSmoking"
+        android:text="Child Care" />
 
     <Button
-        android:id="@+id/savePropDataBtn"
+        android:id="@+id/addPropCancelBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Cancel" />
+
+    <Button
+        android:id="@+id/stepThreeNextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/stepThreeBackBtn"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:text="Save" />
-
-    <ProgressBar
-        android:id="@+id/addPropProgressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone" />
+        android:text="Next" />
 
 </RelativeLayout>

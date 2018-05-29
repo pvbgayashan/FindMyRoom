@@ -1,5 +1,6 @@
 package com.fmr.findmyroom;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 public class AddPropStepOneFragment extends Fragment implements View.OnClickListener {
 
-    private EditText propNameTxt, propPriceTxt;
+    private EditText propNameTxt, propPriceTxt, propCityTxt, propAddressTxt, propPostalCodeTxt;
+    private Spinner propCountrySpinner;
 
     @Nullable
     @Override
@@ -23,6 +26,10 @@ public class AddPropStepOneFragment extends Fragment implements View.OnClickList
         // init input items
         propNameTxt = view.findViewById(R.id.addPropNameTxt);
         propPriceTxt = view.findViewById(R.id.addPropPriceTxt);
+        propCountrySpinner = view.findViewById(R.id.addPropCountrySpinner);
+        propCityTxt = view.findViewById(R.id.addPropCityTxt);
+        propAddressTxt = view.findViewById(R.id.addPropAddressTxt);
+        propPostalCodeTxt = view.findViewById(R.id.addPropPostalCodeTxt);
 
         // handle button clicks
         Button addPropCancelBtn, stepOneNextBtn;
@@ -43,7 +50,13 @@ public class AddPropStepOneFragment extends Fragment implements View.OnClickList
                 nextFragment();
                 break;
             case R.id.addPropCancelBtn:
+                // finish activity
                 getActivity().finish();
+
+                // navigate to home
+                Intent homeIntent = new Intent(getActivity(), MainActivity.class);
+                startActivity(homeIntent);
+
                 break;
         }
     }
@@ -53,11 +66,19 @@ public class AddPropStepOneFragment extends Fragment implements View.OnClickList
         // get input data
         String propName = propNameTxt.getText().toString();
         String propPrice = propPriceTxt.getText().toString();
+        String propCountry= propCountrySpinner.getSelectedItem().toString();
+        String propCity = propCityTxt.getText().toString();
+        String propAddress = propAddressTxt.getText().toString();
+        String propPostalCode = propPostalCodeTxt.getText().toString();
 
         // add data to bundle
         Bundle addPropDataBundle = new Bundle();
         addPropDataBundle.putString("prop_name", propName);
         addPropDataBundle.putString("prop_price", propPrice);
+        addPropDataBundle.putString("prop_country", propCountry);
+        addPropDataBundle.putString("prop_city", propCity);
+        addPropDataBundle.putString("prop_address", propAddress);
+        addPropDataBundle.putString("prop_postal_code", propPostalCode);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

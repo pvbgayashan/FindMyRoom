@@ -2,11 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
 
     <EditText
         android:id="@+id/addPropNameTxt"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -17,7 +18,7 @@
 
     <EditText
         android:id="@+id/addPropPriceTxt"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:ems="10"
@@ -25,23 +26,60 @@
         android:inputType="number"
         android:hint="Price" />
 
+    <Spinner
+        android:id="@+id/addPropCountrySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/addPropPriceTxt"
+        android:entries="@array/countries" />
+
+    <EditText
+        android:id="@+id/addPropCityTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addPropCountrySpinner"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textCapWords"
+        android:hint="City" />
+
+    <EditText
+        android:id="@+id/addPropAddressTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addPropCityTxt"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textCapWords"
+        android:hint="Address" />
+
+    <EditText
+        android:id="@+id/addPropPostalCodeTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addPropAddressTxt"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textCapCharacters"
+        android:hint="Postal Code" />
+
     <Button
         android:id="@+id/addPropCancelBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/addPropNameTxt"
-        android:layout_alignStart="@+id/addPropNameTxt"
-        android:layout_below="@+id/addPropPriceTxt"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:text="Cancel" />
 
     <Button
         android:id="@+id/stepOneNextBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/addPropNameTxt"
-        android:layout_alignRight="@+id/addPropNameTxt"
-        android:layout_alignTop="@+id/addPropCancelBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:text="Next" />
 
 </RelativeLayout>

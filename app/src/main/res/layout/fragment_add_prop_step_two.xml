@@ -1,43 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
 
-    <Spinner
-        android:id="@+id/addPropCountrySpinner"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:entries="@array/countries" />
-
-    <EditText
-        android:id="@+id/addPropCityTxt"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/addPropCountrySpinner"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textCapWords"
-        android:hint="City" />
-
-    <Button
-        android:id="@+id/stepTwoBackBtn"
+    <TextView
+        android:id="@+id/accommodationTypeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/addPropCityTxt"
-        android:layout_alignStart="@+id/addPropCityTxt"
-        android:layout_below="@+id/addPropCityTxt"
-        android:layout_marginTop="20dp"
-        android:text="Back" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Type of Accommodation"
+        android:textSize="16sp" />
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/accommodationTypeRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/accommodationTypeTxt"
+        android:layout_marginTop="4dp"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioBtnApartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apartment" />
+
+        <RadioButton
+            android:id="@+id/radioBtnRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/suitableForTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/accommodationTypeRadioGroup"
+        android:layout_marginTop="10dp"
+        android:text="Suitable For"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxEmployee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/suitableForTxt"
+        android:layout_marginTop="4dp"
+        android:text="Employee" />
+
+    <CheckBox
+        android:id="@+id/checkBoxStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxEmployee"
+        android:text="Student" />
+
+    <CheckBox
+        android:id="@+id/checkBoxOther"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxStudent"
+        android:text="Other" />
+
+    <CheckBox
+        android:id="@+id/checkBoxMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBoxEmployee"
+        android:layout_alignBottom="@+id/checkBoxEmployee"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_toEndOf="@+id/checkBoxEmployee"
+        android:layout_toRightOf="@+id/checkBoxEmployee"
+        android:text="Male" />
+
+    <CheckBox
+        android:id="@+id/checkBoxFemale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBoxMale"
+        android:layout_alignStart="@+id/checkBoxMale"
+        android:layout_below="@+id/checkBoxMale"
+        android:text="Female" />
+
+    <TextView
+        android:id="@+id/areaTypeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/checkBoxOther"
+        android:layout_marginTop="10dp"
+        android:text="Type of Area"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxUrban"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/areaTypeTxt"
+        android:layout_marginTop="4dp"
+        android:text="Urban" />
+
+    <CheckBox
+        android:id="@+id/checkBoxVillage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxUrban"
+        android:text="Village" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSeaSide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxVillage"
+        android:text="Sea Side" />
+
+    <Button
+        android:id="@+id/addPropCancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Cancel" />
 
     <Button
         android:id="@+id/stepTwoNextBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/addPropCityTxt"
-        android:layout_alignRight="@+id/addPropCityTxt"
-        android:layout_alignTop="@+id/stepTwoBackBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:text="Next" />
 
 </RelativeLayout>
