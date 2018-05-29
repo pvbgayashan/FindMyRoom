@@ -11,6 +11,8 @@ public class Property {
     private String address;
     private String postalCode;
     private String downloadUrl;
+    private String userName;
+    private float rating;
     private Map<String, Boolean> propPrefMapper;
 
     public Property() {
@@ -18,7 +20,7 @@ public class Property {
     }
 
     public Property(String name, String price, String country, String city, String address,
-                    String postalCode, String downloadUrl, Map<String, Boolean> propPrefMapper) {
+                    String postalCode, String downloadUrl, String userName, float rating, Map<String, Boolean> propPrefMapper) {
         this.name = name;
         this.price = price;
         this.country = country;
@@ -26,10 +28,12 @@ public class Property {
         this.address = address;
         this.postalCode = postalCode;
         this.downloadUrl = downloadUrl;
+        this.userName = userName;
+        this.rating = rating;
         this.propPrefMapper = propPrefMapper;
     }
 
-    public String getPropName() {
+    public String getName() {
         return name;
     }
 
@@ -55,6 +59,14 @@ public class Property {
 
     public String getDownloadUrl() {
         return downloadUrl;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public float getRating() {
+        return rating;
     }
 
     public Map<String, Boolean> getPropertyPrefMapper() {

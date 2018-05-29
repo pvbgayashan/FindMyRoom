@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -51,6 +52,7 @@ public class PropertyCardAdapter extends BaseAdapter {
         TextView miniAddressTxtView = view.findViewById(R.id.miniAddress);
         TextView priceTxtView = view.findViewById(R.id.price);
         ImageView propImgView = view.findViewById(R.id.propImageView);
+        RatingBar propRatingBar = view.findViewById(R.id.propRatingBar);
 
         // set click listener for property card
         CardView propCard = view.findViewById(R.id.propCard);
@@ -61,15 +63,16 @@ public class PropertyCardAdapter extends BaseAdapter {
 
                 // add data to intent
                 detailViewIntent.putExtra("imgDownloadUrl", propList.get(i).getDownloadUrl());
-                detailViewIntent.putExtra("propName", propList.get(i).getPropName());
+                detailViewIntent.putExtra("propName", propList.get(i).getName());
 
                 context.startActivity(detailViewIntent);
             }
         });
 
-        propNameTxtView.setText(propList.get(i).getPropName());
+        propNameTxtView.setText(propList.get(i).getName());
         miniAddressTxtView.setText(propList.get(i).getCity() + ", " + propList.get(i).getCountry());
         priceTxtView.setText("$" + propList.get(i).getPrice() + "/day");
+        propRatingBar.setRating(propList.get(i).getRating());
         Picasso.with(context)
                 .load(propList.get(i).getDownloadUrl())
                 .placeholder(R.drawable.placeholder)

@@ -67,13 +67,22 @@
                         android:id="@+id/price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
                         android:padding="2dp"
                         android:background="#1B5E20"
                         android:textColor="@color/white"
                         android:layout_gravity="right"
                         android:textSize="12sp"
                         android:text="Price" />
+
+                    <RatingBar
+                        android:id="@+id/propRatingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_gravity="right"
+                        android:numStars="5"
+                        android:isIndicator="false" />
 
                 </LinearLayout>
 

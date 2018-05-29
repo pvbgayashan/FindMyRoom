@@ -13,15 +13,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class AddPropStepOneFragment extends Fragment implements View.OnClickListener {
 
     private EditText propNameTxt, propPriceTxt, propCityTxt, propAddressTxt, propPostalCodeTxt;
     private Spinner propCountrySpinner;
 
+    private FirebaseAuth mAuth;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_prop_step_one, container, false);
+
+        // initialize fire base auth instance
+        mAuth = FirebaseAuth.getInstance();
 
         // init input items
         propNameTxt = view.findViewById(R.id.addPropNameTxt);
@@ -71,6 +78,12 @@ public class AddPropStepOneFragment extends Fragment implements View.OnClickList
         String propAddress = propAddressTxt.getText().toString();
         String propPostalCode = propPostalCodeTxt.getText().toString();
 
+        // set user data and default data
+        String propAddedUserName = "default_user";
+        if (mAuth.getCurrentUser() != null)
+            propAddedUserName = mAuth.getCurrentUser().getEmail();
+        String propRatingValue = "0.0f";
+
         // add data to bundle
         Bundle addPropDataBundle = new Bundle();
         addPropDataBundle.putString("prop_name", propName);
@@ -79,6 +92,8 @@ public class AddPropStepOneFragment extends Fragment implements View.OnClickList
         addPropDataBundle.putString("prop_city", propCity);
         addPropDataBundle.putString("prop_address", propAddress);
         addPropDataBundle.putString("prop_postal_code", propPostalCode);
+        addPropDataBundle.putString("prop_added_user_name", propAddedUserName);
+        addPropDataBundle.putString("prop_rating_value", propRatingValue);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
