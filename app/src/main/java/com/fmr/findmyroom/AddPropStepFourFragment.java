@@ -167,6 +167,7 @@ public class AddPropStepFourFragment extends Fragment implements View.OnClickLis
             String userName = addPropDataBundle.getString("prop_added_user_name");
             String ratingString = addPropDataBundle.getString("prop_rating_value");
             float ratingValue = Float.parseFloat(ratingString);
+            int pax = Integer.parseInt(addPropDataBundle.getString("prop_pax"));
 
             // get property preferences and put it on map
             Map<String, Boolean> propPrefMapper = new HashMap<>();
@@ -201,7 +202,7 @@ public class AddPropStepFourFragment extends Fragment implements View.OnClickLis
 
             // create data model
             Property property = new Property(name, price, country, city, address, postalCode,
-                    phone, imageDownloadUrl, userName, ratingValue, propPrefMapper);
+                    phone, imageDownloadUrl, userName, ratingValue, propPrefMapper, pax);
 
             // save data
             mDatabaseRef.child(id).setValue(property).addOnSuccessListener(new OnSuccessListener<Void>() {

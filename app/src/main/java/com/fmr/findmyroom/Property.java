@@ -15,6 +15,7 @@ public class Property {
     private String userName;
     private float rating;
     private Map<String, Boolean> preferences;
+    int pax;
 
     public Property() {
         // empty constructor required
@@ -22,7 +23,7 @@ public class Property {
 
     public Property(String name, String price, String country, String city, String address,
                     String postalCode, String phone, String downloadUrl, String userName,
-                    float rating, Map<String, Boolean> preferences) {
+                    float rating, Map<String, Boolean> preferences, int pax) {
         this.name = name;
         this.price = price;
         this.country = country;
@@ -34,6 +35,7 @@ public class Property {
         this.userName = userName;
         this.rating = rating;
         this.preferences = preferences;
+        this.pax = pax;
     }
 
     public String getName() {
@@ -78,5 +80,9 @@ public class Property {
 
     public Map<String, Boolean> getPreferences() {
         return preferences;
+    }
+
+    public int getPax() {
+        return pax;
     }
 }

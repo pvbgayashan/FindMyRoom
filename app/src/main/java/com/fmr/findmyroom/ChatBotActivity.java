@@ -52,7 +52,7 @@ public class ChatBotActivity extends AppCompatActivity {
         final AITextHandler aiTextHandler = new AITextHandler();
 
         // create first chat
-        chatList.add(new ChatModel("Hi, I can assist you in many ways. Anyway how can I help you now?", true));
+        chatList.add(new ChatModel("Hi, I'm here for you to find your accommodation. How can I help you?", true));
 
         // setup list view
         ChatMessageAdapter chatMessageAdapter = new ChatMessageAdapter(chatList, thisContext);

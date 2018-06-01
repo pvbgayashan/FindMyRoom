@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -74,6 +75,7 @@ public class PropertyCardAdapter extends BaseAdapter {
 
                 // add data to intent
                 detailViewIntent.putExtra("imgDownloadUrl", propList.get(i).getDownloadUrl());
+                detailViewIntent.putExtra("propPax", String.valueOf(propList.get(i).getPax()));
                 detailViewIntent.putExtra("propName", propList.get(i).getName());
                 detailViewIntent.putExtra("propAddressLine", propList.get(i).getAddress()
                         + ", " + propList.get(i).getCity() + " " + propList.get(i).getPostalCode());

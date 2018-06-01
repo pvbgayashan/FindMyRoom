@@ -23,6 +23,7 @@ public class DetailViewActivity extends AppCompatActivity {
         TextView childCareStatusTxt = findViewById(R.id.childCareStatusTxt);
 
         ImageView mainImage = findViewById(R.id.mainImage);
+        TextView propPaxTxt = findViewById(R.id.paxTxt);
         TextView propNameTxt = findViewById(R.id.propNameTxt);
         TextView propAddressLineTxt = findViewById(R.id.propAddressLineTxt);
         TextView propCountryTxt = findViewById(R.id.propCountryTxt);
@@ -33,6 +34,7 @@ public class DetailViewActivity extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             boolean[] amensAndRules = getIntent().getExtras().getBooleanArray("propAmensAndRules");
             String imgDownloadUrl = getIntent().getExtras().getString("imgDownloadUrl");
+            String pax = getIntent().getExtras().getString("propPax");
             String propName = getIntent().getExtras().getString("propName");
             String addressLine = getIntent().getExtras().getString("propAddressLine");
             String country = getIntent().getExtras().getString("propCountry");
@@ -63,6 +65,7 @@ public class DetailViewActivity extends AppCompatActivity {
             childCareStatusTxt.setTextColor(color2);
 
             // set data
+            propPaxTxt.setText("Maximum PAX: " + pax);
             propNameTxt.setText(propName);
             propAddressLineTxt.setText(addressLine);
             propCountryTxt.setText(country);
