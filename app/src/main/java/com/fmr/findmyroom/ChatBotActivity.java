@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.JsonElement;
@@ -105,8 +106,11 @@ public class ChatBotActivity extends AppCompatActivity {
                             if (botResponse.get("params") != null && botResponse.get("params") instanceof HashMap) {
                                 params = (HashMap<String, JsonElement>) botResponse.get("params");
 
-                                // all necessary params provided
-                                if (params.size() == 2) {
+                                // find property with parameters
+                                System.out.println(botSpeech);
+                                System.out.println("I looking for a place for you. Give me a minute.");
+
+                                if (botSpeech.contains("I looking for a place for you. Give me a minute.")) {
                                     findPropertyForResponse(params);
                                 }
                             }
