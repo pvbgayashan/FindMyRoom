@@ -64,6 +64,16 @@
         android:inputType="textCapCharacters"
         android:hint="Postal Code" />
 
+    <EditText
+        android:id="@+id/addPropPhoneTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addPropPostalCodeTxt"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="phone"
+        android:hint="Phone Number (011 123 45 67)" />
+
     <Button
         android:id="@+id/addPropCancelBtn"
         android:layout_width="wrap_content"

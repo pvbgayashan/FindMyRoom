@@ -10,27 +10,30 @@ public class Property {
     private String city;
     private String address;
     private String postalCode;
+    private String phone;
     private String downloadUrl;
     private String userName;
     private float rating;
-    private Map<String, Boolean> propPrefMapper;
+    private Map<String, Boolean> preferences;
 
     public Property() {
         // empty constructor required
     }
 
     public Property(String name, String price, String country, String city, String address,
-                    String postalCode, String downloadUrl, String userName, float rating, Map<String, Boolean> propPrefMapper) {
+                    String postalCode, String phone, String downloadUrl, String userName,
+                    float rating, Map<String, Boolean> preferences) {
         this.name = name;
         this.price = price;
         this.country = country;
         this.city = city;
         this.address = address;
         this.postalCode = postalCode;
+        this.phone = phone;
         this.downloadUrl = downloadUrl;
         this.userName = userName;
         this.rating = rating;
-        this.propPrefMapper = propPrefMapper;
+        this.preferences = preferences;
     }
 
     public String getName() {
@@ -57,6 +60,10 @@ public class Property {
         return postalCode;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
     public String getDownloadUrl() {
         return downloadUrl;
     }
@@ -69,7 +76,7 @@ public class Property {
         return rating;
     }
 
-    public Map<String, Boolean> getPropertyPrefMapper() {
-        return propPrefMapper;
+    public Map<String, Boolean> getPreferences() {
+        return preferences;
     }
 }

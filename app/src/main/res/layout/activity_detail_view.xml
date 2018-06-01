@@ -12,20 +12,18 @@
 
         <ImageView
             android:id="@+id/mainImage"
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_height="wrap_content" />
 
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -38,7 +36,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="6dp"
+                        android:padding="4dp"
                         android:src="@drawable/ic_pets" />
 
                     <TextView
@@ -46,6 +44,13 @@
                         android:layout_height="wrap_content"
                         android:text="Pets" />
 
+                    <TextView
+                        android:id="@+id/petsStatusTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="Status" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -58,7 +63,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="6dp"
+                        android:padding="4dp"
                         android:src="@drawable/ic_smoking_rooms" />
 
                     <TextView
@@ -66,6 +71,13 @@
                         android:layout_height="wrap_content"
                         android:text="Smoking" />
 
+                    <TextView
+                        android:id="@+id/smokingStatusTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="Status" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -78,13 +90,20 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="6dp"
+                        android:padding="4dp"
                         android:src="@drawable/ic_child_care" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Child Care" />
+
+                    <TextView
+                        android:id="@+id/childCareStatusTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="Status" />
 
                 </LinearLayout>
 
@@ -98,28 +117,31 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/propName"
+                    android:id="@+id/propNameTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:text="Property Name" />
 
                 <TextView
+                    android:id="@+id/propAddressLineTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Galle Road, Ahungalla 80562"/>
+                    android:text="Address, City 12000" />
 
                 <TextView
+                    android:id="@+id/propCountryTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sri Lanka"/>
+                    android:text="Country"/>
 
                 <TextView
+                    android:id="@+id/propPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:textColor="#3E2723"
-                    android:text="Tel: +94 (0) 91 5220000"/>
+                    android:text="Tel: +94 (0) 11 1234567"/>
 
             </LinearLayout>
 
@@ -130,9 +152,10 @@
                 android:layout_marginTop="20dp">
 
                 <Button
+                    android:id="@+id/callNowBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+ Book Now"
+                    android:text="Call Now"
                     android:textColor="#FFFFFF"
                     android:backgroundTint="#0091EA"/>
 

@@ -12,7 +12,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
+import java.util.Map;
 
 public class PropertyCardAdapter extends BaseAdapter {
 
@@ -61,9 +63,23 @@ public class PropertyCardAdapter extends BaseAdapter {
             public void onClick(View view) {
                 Intent detailViewIntent = new Intent(context, DetailViewActivity.class);
 
+                // get mapper
+                Map<String, Boolean> propPrefMapper = propList.get(i).getPreferences();
+                boolean amensAndRules[] = new boolean[3];
+                if (propPrefMapper != null) {
+                    amensAndRules[0] = propPrefMapper.get("pets");
+                    amensAndRules[1] = propPrefMapper.get("smoking");
+                    amensAndRules[2] = propPrefMapper.get("child_care");
+                }
+
                 // add data to intent
                 detailViewIntent.putExtra("imgDownloadUrl", propList.get(i).getDownloadUrl());
                 detailViewIntent.putExtra("propName", propList.get(i).getName());
+                detailViewIntent.putExtra("propAddressLine", propList.get(i).getAddress()
+                        + ", " + propList.get(i).getCity() + " " + propList.get(i).getPostalCode());
+                detailViewIntent.putExtra("propCountry", propList.get(i).getCountry());
+                detailViewIntent.putExtra("propPhone", propList.get(i).getPhone());
+                detailViewIntent.putExtra("propAmensAndRules", amensAndRules);
 
                 context.startActivity(detailViewIntent);
             }

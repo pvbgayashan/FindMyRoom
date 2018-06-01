@@ -163,6 +163,7 @@ public class AddPropStepFourFragment extends Fragment implements View.OnClickLis
             String city = addPropDataBundle.getString("prop_city");
             String address = addPropDataBundle.getString("prop_address");
             String postalCode = addPropDataBundle.getString("prop_postal_code");
+            String phone = addPropDataBundle.getString("prop_phone");
             String userName = addPropDataBundle.getString("prop_added_user_name");
             String ratingString = addPropDataBundle.getString("prop_rating_value");
             float ratingValue = Float.parseFloat(ratingString);
@@ -200,7 +201,7 @@ public class AddPropStepFourFragment extends Fragment implements View.OnClickLis
 
             // create data model
             Property property = new Property(name, price, country, city, address, postalCode,
-                    imageDownloadUrl, userName, ratingValue, propPrefMapper);
+                    phone, imageDownloadUrl, userName, ratingValue, propPrefMapper);
 
             // save data
             mDatabaseRef.child(id).setValue(property).addOnSuccessListener(new OnSuccessListener<Void>() {

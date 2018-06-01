@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AddPropStepOneFragment extends Fragment implements View.OnClickListener {
 
-    private EditText propNameTxt, propPriceTxt, propCityTxt, propAddressTxt, propPostalCodeTxt;
+    private EditText propNameTxt, propPriceTxt, propCityTxt, propAddressTxt, propPostalCodeTxt, propPhoneTxt;
     private Spinner propCountrySpinner;
 
     private FirebaseAuth mAuth;
@@ -37,6 +37,7 @@ public class AddPropStepOneFragment extends Fragment implements View.OnClickList
         propCityTxt = view.findViewById(R.id.addPropCityTxt);
         propAddressTxt = view.findViewById(R.id.addPropAddressTxt);
         propPostalCodeTxt = view.findViewById(R.id.addPropPostalCodeTxt);
+        propPhoneTxt = view.findViewById(R.id.addPropPhoneTxt);
 
         // handle button clicks
         Button addPropCancelBtn, stepOneNextBtn;
@@ -77,6 +78,7 @@ public class AddPropStepOneFragment extends Fragment implements View.OnClickList
         String propCity = propCityTxt.getText().toString();
         String propAddress = propAddressTxt.getText().toString();
         String propPostalCode = propPostalCodeTxt.getText().toString();
+        String propPhone = propPhoneTxt.getText().toString();
 
         // set user data and default data
         String propAddedUserName = "default_user";
@@ -92,6 +94,7 @@ public class AddPropStepOneFragment extends Fragment implements View.OnClickList
         addPropDataBundle.putString("prop_city", propCity);
         addPropDataBundle.putString("prop_address", propAddress);
         addPropDataBundle.putString("prop_postal_code", propPostalCode);
+        addPropDataBundle.putString("prop_phone", propPhone);
         addPropDataBundle.putString("prop_added_user_name", propAddedUserName);
         addPropDataBundle.putString("prop_rating_value", propRatingValue);
 
