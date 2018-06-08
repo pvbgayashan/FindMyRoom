@@ -1,4 +1,4 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.fmr.findmyroom.R;
+import com.fmr.findmyroom.view_property.PropertyListActivity;
+import com.fmr.findmyroom.add_property.AddPropertyActivity;
+import com.fmr.findmyroom.user_management.UserConnectionActivity;
 import com.fmr.findmyroom.virtual_agent.ChatBotActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -78,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent allListingIntent = new Intent(getApplicationContext(), RoomListActivity.class);
+                Intent allListingIntent = new Intent(getApplicationContext(), PropertyListActivity.class);
                 startActivity(allListingIntent);
             }
         });

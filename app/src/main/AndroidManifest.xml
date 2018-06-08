@@ -14,24 +14,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".main.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".RoomListActivity" />
+        <activity android:name=".main.MainActivity" />
+        <activity android:name=".view_property.PropertyListActivity" />
         <activity android:name=".virtual_agent.ChatBotActivity" />
         <activity
-            android:name=".UserConnectionActivity"
+            android:name=".user_management.UserConnectionActivity"
             android:label="@string/title_activity_user_connection"
             android:theme="@style/AppTheme" />
-        <activity android:name=".DetailViewActivity" />
-        <activity android:name=".AddPropertyActivity" />
-        <activity android:name=".RegularUserPreferenceActivity" />
-        <activity android:name=".AdvancedUserPreferenceActivity" />
+        <activity android:name=".view_property.DetailViewActivity" />
+        <activity android:name=".add_property.AddPropertyActivity" />
+        <activity android:name=".user_management.RegularUserPreferenceActivity" />
+        <activity android:name=".user_management.AdvancedUserPreferenceActivity" />
     </application>
 
 </manifest>

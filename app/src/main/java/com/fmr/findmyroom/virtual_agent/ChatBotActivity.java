@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.fmr.findmyroom.R;
-import com.fmr.findmyroom.RoomListActivity;
+import com.fmr.findmyroom.view_property.PropertyListActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.JsonElement;
 
@@ -156,7 +156,7 @@ public class ChatBotActivity extends AppCompatActivity {
 
     // navigate to room list view
     private void findPropertyForResponse(HashMap<String, JsonElement> params) {
-        final Intent toPropertyListIntent = new Intent(thisContext, RoomListActivity.class);
+        final Intent toPropertyListIntent = new Intent(thisContext, PropertyListActivity.class);
 
         // put data to intent
         for (Map.Entry entry : params.entrySet()) {

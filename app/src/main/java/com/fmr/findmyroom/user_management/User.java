@@ -1,4 +1,4 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.user_management;
 
 public class User {
 

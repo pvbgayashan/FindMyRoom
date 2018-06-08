@@ -1,10 +1,12 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.user_management;
 
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
+
+import com.fmr.findmyroom.R;
 
 public class UserConnectionActivity extends AppCompatActivity {
 

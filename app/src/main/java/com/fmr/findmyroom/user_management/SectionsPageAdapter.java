@@ -1,4 +1,4 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.user_management;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

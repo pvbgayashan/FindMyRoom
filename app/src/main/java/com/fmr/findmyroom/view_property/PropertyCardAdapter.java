@@ -1,4 +1,4 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.view_property;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +10,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.fmr.findmyroom.common.Property;
+import com.fmr.findmyroom.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

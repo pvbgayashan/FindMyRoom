@@ -1,10 +1,12 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.add_property;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
+import com.fmr.findmyroom.R;
 
 public class AddPropertyActivity extends AppCompatActivity {
 

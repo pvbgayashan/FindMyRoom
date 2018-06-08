@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.fmr.findmyroom.UserConnectionActivity">
+    tools:context="com.fmr.findmyroom.user_management.UserConnectionActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"

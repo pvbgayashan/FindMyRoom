@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fmr.findmyroom.AdvancedUserPreferenceActivity">
+    tools:context="com.fmr.findmyroom.user_management.AdvancedUserPreferenceActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/advUsrPrefToolbar"

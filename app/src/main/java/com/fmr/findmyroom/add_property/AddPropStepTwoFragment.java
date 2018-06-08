@@ -1,4 +1,4 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.add_property;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
+
+import com.fmr.findmyroom.main.MainActivity;
+import com.fmr.findmyroom.R;
 
 public class AddPropStepTwoFragment extends Fragment implements View.OnClickListener {
 
@@ -97,7 +100,7 @@ public class AddPropStepTwoFragment extends Fragment implements View.OnClickList
         addPropDataBundle.putBoolean("village", village.isChecked());
         addPropDataBundle.putBoolean("sea_side", seaSide.isChecked());
 
-        AddPropertyStepThreeFragment addPropStepThreeFragment = new AddPropertyStepThreeFragment();
+        AddPropStepThreeFragment addPropStepThreeFragment = new AddPropStepThreeFragment();
         addPropStepThreeFragment.setArguments(addPropDataBundle);
 
         fragmentTransaction.replace(R.id.addPropStepContainer, addPropStepThreeFragment);

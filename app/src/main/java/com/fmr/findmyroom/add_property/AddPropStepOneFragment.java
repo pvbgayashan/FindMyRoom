@@ -1,4 +1,4 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.add_property;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.fmr.findmyroom.main.MainActivity;
+import com.fmr.findmyroom.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AddPropStepOneFragment extends Fragment implements View.OnClickListener {

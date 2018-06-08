@@ -1,4 +1,4 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.add_property;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 
-public class AddPropertyStepThreeFragment extends Fragment implements View.OnClickListener {
+import com.fmr.findmyroom.main.MainActivity;
+import com.fmr.findmyroom.R;
+
+public class AddPropStepThreeFragment extends Fragment implements View.OnClickListener {
 
     private FragmentTransaction fragmentTransaction;
     private Bundle addPropDataBundle;
