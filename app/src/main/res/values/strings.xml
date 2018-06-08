@@ -27,6 +27,11 @@
 
     <!--chat bot-->
     <string name="bot_name">Virtual Agent</string>
+    <string name="enter_your_message">Enter your message</string>
+    <string name="snack_bar_text">Confirm the action?</string>
+    <string name="confirm">Confirm</string>
+    <string name="sample_sent_text">Sample Sent Text</string>
+    <string name="sample_received_text">Sample Received Text</string>
 
     <!--property list-->
     <string name="all_properties">All Properties</string>

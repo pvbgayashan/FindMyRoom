@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".RoomListActivity" />
-        <activity android:name=".ChatBotActivity" />
+        <activity android:name=".virtual_agent.ChatBotActivity" />
         <activity
             android:name=".UserConnectionActivity"
             android:label="@string/title_activity_user_connection"

@@ -1,4 +1,4 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.virtual_agent;
 
 import android.os.AsyncTask;
 
@@ -38,7 +38,7 @@ public class AITextHandler implements AsyncResponse {
 
     // handling the request
     public void setBotRequest(String userInputMsg) {
-
+        // print user message on console
         System.out.println("Send: " + userInputMsg);
 
         // set user input to query
@@ -50,16 +50,19 @@ public class AITextHandler implements AsyncResponse {
 
     @Override
     public void setBotResponse(String botSpeech, HashMap<String, JsonElement> params) {
+        // print bot response message on console
+        System.out.println("Receive: " + botSpeech);
+
+        // assign response
         this.botSpeech = botSpeech;
         this.params = params;
-
-        System.out.println("Receive: " + botSpeech);
     }
 
+    // handling the response
     public Map<String, Object> getBotResponse() {
         Map<String, Object> resultMap = new HashMap<>();
 
-        // put data
+        // put data to map
         resultMap.put("botSpeech", botSpeech);
         resultMap.put("params", params);
 
@@ -82,8 +85,8 @@ public class AITextHandler implements AsyncResponse {
 
             try {
                 aiResponse = aiDataService.request(aiRequest);
-            } catch (AIServiceException e) {
-                e.printStackTrace();
+            } catch (AIServiceException ex) {
+                ex.printStackTrace();
             }
 
             return aiResponse;

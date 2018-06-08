@@ -1,4 +1,4 @@
-package com.fmr.findmyroom;
+package com.fmr.findmyroom.virtual_agent;
 
 public class ChatModel {
 

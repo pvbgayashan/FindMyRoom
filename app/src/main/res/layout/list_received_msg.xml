@@ -10,9 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="200dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:text="Sample Received Text"
+        android:text="@string/sample_received_text"
         android:padding="10dp"
         android:textColor="@android:color/white"
         android:textSize="16sp"
@@ -20,9 +18,8 @@
         app:arrowWidth="8dp"
         app:angle="8dp"
         app:arrowHeight="10dp"
-        app:arrowPosition="14dp"
-        app:arrowLocation="right"
-        app:bubbleColor="@android:color/darker_gray"
+        app:arrowLocation="left"
+        app:bubbleColor="@android:color/holo_blue_dark"
         app:arrowCenter="true" />
 
 </RelativeLayout>
