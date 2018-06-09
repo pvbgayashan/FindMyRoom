@@ -66,13 +66,16 @@ public class DetailViewActivity extends AppCompatActivity {
             childCareStatusTxt.setTextColor(color2);
 
             // set data
-            propPaxTxt.setText("Maximum PAX: " + pax);
+            String maximumPax = "Maximum PAX: " + pax;
+            propPaxTxt.setText(maximumPax);
             propNameTxt.setText(propName);
             propAddressLineTxt.setText(addressLine);
             propCountryTxt.setText(country);
-            if (phone != null && phone.length() >= 10)
-                propPhone.setText("Tel: +94 (" + phone.substring(0, 1) + ") " + phone.substring(1, 3)
-                        + " " + phone.substring(3, phone.length()));
+            if (phone != null && phone.length() >= 10) {
+                String phoneNumber = "Tel: +94 (" + phone.substring(0, 1) + ") " + phone.substring(1, 3)
+                        + " " + phone.substring(3, phone.length());
+                propPhone.setText(phoneNumber);
+            }
 
             // create calling action
             callNowBtn.setOnClickListener(new View.OnClickListener() {

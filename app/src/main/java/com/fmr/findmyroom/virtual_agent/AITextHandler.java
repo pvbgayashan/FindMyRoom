@@ -94,7 +94,11 @@ public class AITextHandler implements AsyncResponse {
 
         @Override
         protected void onPostExecute(AIResponse aiResponse) {
-            Result result = aiResponse.getResult();
+            Result result;
+            if (aiResponse != null && aiResponse.getResult() != null)
+                result = aiResponse.getResult();
+            else
+                return;
 
             String botSpeech = result.getFulfillment().getSpeech();
             HashMap<String, JsonElement> params = result.getParameters();

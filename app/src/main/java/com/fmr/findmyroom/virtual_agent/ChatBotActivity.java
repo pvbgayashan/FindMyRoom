@@ -171,6 +171,7 @@ public class ChatBotActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                finish();
                 startActivity(toPropertyListIntent);
             }
         }, 200);

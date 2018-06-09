@@ -52,6 +52,9 @@ public class PropertyListActivity extends AppCompatActivity {
         // init fire base auth instance
         mAuth = FirebaseAuth.getInstance();
 
+        // set database reference
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATA_REF);
+
         // init property list and property list view
         propList = new ArrayList<>();
         propListView = findViewById(R.id.propListView);
@@ -61,9 +64,6 @@ public class PropertyListActivity extends AppCompatActivity {
 
         // init material search view
         propSearchView = findViewById(R.id.propSearch);
-
-        // set database reference
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATA_REF);
 
         // get data from intent
         if (getIntent().getExtras() != null) {
@@ -118,19 +118,34 @@ public class PropertyListActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
 
                 // add property to property list
+                int propCounter = 0;
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot propertySnap : dataSnapshot.getChildren()) {
                         Property property = propertySnap.getValue(Property.class);
 
                         // add filter to data
-                        if (intentDataBundle != null && intentDataBundle.getString("city") != null) { // add filtered data to list
-                            String city = intentDataBundle.getString("city").replace("\"", "");
+                        if (intentDataBundle != null
+                                && intentDataBundle.getString("city") != null
+                                && intentDataBundle.getString("accommodation_type") != null
+                                && intentDataBundle.getString("area_type") != null
+                                && intentDataBundle.getString("pax") != null) { // add filtered data to list
 
-                            if (property.getCity().toLowerCase().contains(city.toLowerCase())) {
+                            String city = intentDataBundle.getString("city").replace("\"", "");
+                            String accommodationType = intentDataBundle.getString("accommodation_type")
+                                    .replace("\"", "");
+                            String areaType = intentDataBundle.getString("area_type").replace("\"", "");
+                            String pax = intentDataBundle.getString("pax").replace("\"", "");
+
+                            if (property.getCity().toLowerCase().contains(city.toLowerCase())
+                                    && property.getPax() >= Integer.parseInt(pax)
+                                    && (property.getPreferences().get(accommodationType) != null && property.getPreferences().get(accommodationType))
+                                    && (property.getPreferences().get(areaType) != null && property.getPreferences().get(areaType))) {
                                 propList.add(property);
+                                propCounter++;
                             }
                         } else { // add all property to list
                             propList.add(property);
+                            propCounter++;
                         }
                     }
 
@@ -139,7 +154,7 @@ public class PropertyListActivity extends AppCompatActivity {
                     propListView.setAdapter(propertyCardAdapter);
 
                     // set the toolbar and property description
-                    setToolbarAndPropDesc(dataSnapshot, intentDataBundle);
+                    setToolbarAndPropDesc(propCounter, intentDataBundle);
                 }
             }
 
@@ -154,7 +169,7 @@ public class PropertyListActivity extends AppCompatActivity {
     }
 
     // create the toolbar and property result description
-    private void setToolbarAndPropDesc(DataSnapshot dataSnapshot, Bundle intentDataBundle) {
+    private void setToolbarAndPropDesc(int propCount, Bundle intentDataBundle) {
         // extract data bundle
         String city = null, pax = null;
         if (intentDataBundle != null) {
@@ -167,8 +182,6 @@ public class PropertyListActivity extends AppCompatActivity {
 
         // set the toolbar
         Toolbar roomListToolbar = findViewById(R.id.roomListToolbar);
-
-        // set toolbar title and subtitle
         if ((city != null && !city.isEmpty()) && (pax != null && !pax.isEmpty())) {
             roomListToolbar.setTitle(city);
             roomListToolbar.setSubtitle(pax + " person(s)");
@@ -180,9 +193,18 @@ public class PropertyListActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // set property desc result text view
-        long propCount = dataSnapshot.getChildrenCount();
         TextView propResultDescTxt = findViewById(R.id.propResultDescTxt);
-        propResultDescTxt.setText("Showing " + propCount + " properties");
         propResultDescTxt.setBackgroundColor(Color.parseColor("#E0E0E0"));
+
+        if (propCount == 0) {
+            String message = "No results found";
+            propResultDescTxt.setText(message);
+        } else if (propCount == 1) {
+            String message = "Showing " + propCount + " property";
+            propResultDescTxt.setText(message);
+        } else {
+            String message = "Showing " + propCount + " properties";
+            propResultDescTxt.setText(message);
+        }
     }
 }

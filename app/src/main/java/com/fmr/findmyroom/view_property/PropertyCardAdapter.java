@@ -47,7 +47,6 @@ public class PropertyCardAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-
         // set property card layout
         view = layoutInflater.inflate(R.layout.list_prop_card, null);
 
@@ -89,8 +88,10 @@ public class PropertyCardAdapter extends BaseAdapter {
         });
 
         propNameTxtView.setText(propList.get(i).getName());
-        miniAddressTxtView.setText(propList.get(i).getCity() + ", " + propList.get(i).getCountry());
-        priceTxtView.setText("$" + propList.get(i).getPrice() + "/day");
+        String miniAddress = propList.get(i).getCity() + ", " + propList.get(i).getCountry();
+        miniAddressTxtView.setText(miniAddress);
+        String price = "$" + propList.get(i).getPrice() + "/day";
+        priceTxtView.setText(price);
         propRatingBar.setRating(propList.get(i).getRating());
         Picasso.with(context)
                 .load(propList.get(i).getDownloadUrl())
