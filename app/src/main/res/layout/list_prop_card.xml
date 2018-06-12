@@ -82,7 +82,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_gravity="right"
                         android:numStars="5"
-                        android:isIndicator="false" />
+                        android:isIndicator="true" />
 
                 </LinearLayout>
 

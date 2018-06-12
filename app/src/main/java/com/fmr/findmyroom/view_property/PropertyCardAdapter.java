@@ -74,6 +74,7 @@ public class PropertyCardAdapter extends BaseAdapter {
                 }
 
                 // add data to intent
+                detailViewIntent.putExtra("propId", propList.get(i).getId());
                 detailViewIntent.putExtra("imgDownloadUrl", propList.get(i).getDownloadUrl());
                 detailViewIntent.putExtra("propPax", String.valueOf(propList.get(i).getPax()));
                 detailViewIntent.putExtra("propName", propList.get(i).getName());
@@ -81,6 +82,8 @@ public class PropertyCardAdapter extends BaseAdapter {
                         + ", " + propList.get(i).getCity() + " " + propList.get(i).getPostalCode());
                 detailViewIntent.putExtra("propCountry", propList.get(i).getCountry());
                 detailViewIntent.putExtra("propPhone", propList.get(i).getPhone());
+                detailViewIntent.putExtra("propRatingValue", propList.get(i).getRating());
+                detailViewIntent.putExtra("propRateCount", propList.get(i).getRateCount());
                 detailViewIntent.putExtra("propAmensAndRules", amensAndRules);
 
                 context.startActivity(detailViewIntent);
@@ -92,7 +95,9 @@ public class PropertyCardAdapter extends BaseAdapter {
         miniAddressTxtView.setText(miniAddress);
         String price = "$" + propList.get(i).getPrice() + "/day";
         priceTxtView.setText(price);
-        propRatingBar.setRating(propList.get(i).getRating());
+        float rv = propList.get(i).getRateCount() == 0 ? propList.get(i).getRating()
+                : propList.get(i).getRating() / propList.get(i).getRateCount();
+        propRatingBar.setRating(rv);
         Picasso.with(context)
                 .load(propList.get(i).getDownloadUrl())
                 .placeholder(R.drawable.placeholder)

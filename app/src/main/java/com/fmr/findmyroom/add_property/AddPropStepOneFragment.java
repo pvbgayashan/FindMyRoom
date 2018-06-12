@@ -90,6 +90,7 @@ public class AddPropStepOneFragment extends Fragment implements View.OnClickList
         if (mAuth.getCurrentUser() != null)
             propAddedUserName = mAuth.getCurrentUser().getEmail();
         String propRatingValue = "0.0f";
+        String propRateCount = "0";
 
         // add data to bundle
         Bundle addPropDataBundle = new Bundle();
@@ -102,6 +103,7 @@ public class AddPropStepOneFragment extends Fragment implements View.OnClickList
         addPropDataBundle.putString("prop_phone", propPhone);
         addPropDataBundle.putString("prop_added_user_name", propAddedUserName);
         addPropDataBundle.putString("prop_rating_value", propRatingValue);
+        addPropDataBundle.putString("prop_rating_count", propRateCount);
         addPropDataBundle.putString("prop_pax", propPax);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

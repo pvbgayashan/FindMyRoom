@@ -10,10 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/mainImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/mainImage"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:src="@drawable/placeholder" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,6 +130,16 @@
                     android:text="Maximum PAX: 0"
                     android:textColor="@color/purple" />
 
+                <RatingBar
+                    android:id="@+id/propRatingBar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
+                    android:numStars="5"
+                    android:isIndicator="true" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -173,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:text="Call Now"
                     android:textColor="#FFFFFF"
-                    android:backgroundTint="#0091EA"/>
+                    android:backgroundTint="#0091EA" />
 
             </LinearLayout>
 

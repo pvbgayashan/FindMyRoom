@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class Property {
 
+    private String id;
     private String name;
     private String price;
     private String country;
@@ -14,6 +15,7 @@ public class Property {
     private String downloadUrl;
     private String userName;
     private float rating;
+    private int rateCount;
     private Map<String, Boolean> preferences;
     int pax;
 
@@ -21,9 +23,10 @@ public class Property {
         // empty constructor required
     }
 
-    public Property(String name, String price, String country, String city, String address,
+    public Property(String id, String name, String price, String country, String city, String address,
                     String postalCode, String phone, String downloadUrl, String userName,
-                    float rating, Map<String, Boolean> preferences, int pax) {
+                    float rating, int rateCount, Map<String, Boolean> preferences, int pax) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.country = country;
@@ -34,8 +37,13 @@ public class Property {
         this.downloadUrl = downloadUrl;
         this.userName = userName;
         this.rating = rating;
+        this.rateCount = rateCount;
         this.preferences = preferences;
         this.pax = pax;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -76,6 +84,10 @@ public class Property {
 
     public float getRating() {
         return rating;
+    }
+
+    public int getRateCount() {
+        return rateCount;
     }
 
     public Map<String, Boolean> getPreferences() {

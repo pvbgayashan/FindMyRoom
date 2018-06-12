@@ -111,7 +111,7 @@ public class SignUpFragment extends Fragment {
 
                             // get the user type and navigate to relevant preferences activity
                             Dialog userTypeSelector = new Dialog(view.getContext());
-                            userTypeSelector.setContentView(R.layout.pop_up_dialog);
+                            userTypeSelector.setContentView(R.layout.user_type_pop_up_dialog);
 
                             userTypeSelector.setCanceledOnTouchOutside(false);
                             userTypeSelector.show();
